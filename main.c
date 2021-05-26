@@ -165,7 +165,7 @@ int chevauchement(Boat *bateau,int i, Grid grille_bateau){
 
     if(bateau[i].orientation == 'H'){
         for(a = bateau[i].position_x; a - bateau[i].position_x < bateau[i].taille; a++){
-            if(grille_bateau.grille[bateau[i].position_x][bateau[i].position_y] != '_'){
+            if(grille_bateau.grille[a][bateau[i].position_y] != '_'){
                 test = 1;
             }else{
                 test = 0;
@@ -173,7 +173,7 @@ int chevauchement(Boat *bateau,int i, Grid grille_bateau){
         }
     }else{
         for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){
-            if(grille_bateau.grille[bateau[i].position_x][bateau[i].position_y] != '_'){
+            if(grille_bateau.grille[bateau[i].position_x][a] != '_'){
                 test = 1;
             }else{
                 test = 0;
