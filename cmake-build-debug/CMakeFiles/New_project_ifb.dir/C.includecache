@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New_project_ifb/main.c
+stdio.h
+-
+stdlib.h
+-
+time.h
+-
+
