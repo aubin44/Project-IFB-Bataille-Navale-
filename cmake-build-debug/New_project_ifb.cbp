@@ -74,6 +74,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/anais/CLionProjects/New-project-IFB/Depart_Grille.c">
+			<Option target="New_project_ifb"/>
+		</Unit>
+		<Unit filename="C:/Users/anais/CLionProjects/New-project-IFB/Depart_Grille.h">
+			<Option target="New_project_ifb"/>
+		</Unit>
 		<Unit filename="C:/Users/anais/CLionProjects/New-project-IFB/main.c">
 			<Option target="New_project_ifb"/>
 		</Unit>
