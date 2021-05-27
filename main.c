@@ -9,7 +9,7 @@ void fire_tactical(Grid *grille, Grid tableau_bateau, int X, int Y);
 
 void fire_bomb(Grid *grille, Grid tableau_bateau, int X, int Y);
 
-void(Grid *grille, Grid tableau_bateau, int X, int Y);
+void fire_simple(Grid *grille, Grid tableau_bateau, int X, int Y);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -56,7 +56,7 @@ int main(){
     position_Y = buffer - 'A';
     printf("%d\n", position_Y);
 
-    fire_bomb(&grille_de_jeu, grille_bateaux, position_X, position_Y);
+    fire_simple(&grille_de_jeu, grille_bateaux, position_X, position_Y);
 
     show_grid(grille_de_jeu);
 
@@ -109,4 +109,12 @@ void fire_bomb(Grid *grille, Grid tableau_bateau, int X, int Y){
             }
         }
     }
+}
+
+void fire_simple(Grid *grille, Grid tableau_bateau, int X, int Y){
+     if(tableau_bateau.grille[X][Y] == '_'){
+        (*grille).grille[X][Y] = 'O';
+    }else if(tableau_bateau.grille[X][Y] != '_'){
+         (*grille).grille[X][Y] = 'X';
+     }
 }
