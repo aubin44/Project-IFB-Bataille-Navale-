@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+//test
 typedef struct{
     int position_x;
     int position_y;
