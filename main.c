@@ -5,7 +5,7 @@
 
 void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y);
 
-void fire_tactical();
+void fire_tactical(Grid *grille, Grid tableau_bateau, int X, int Y);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -52,7 +52,7 @@ int main(){
     position_Y = buffer - 'A';
     printf("%d\n", position_Y);
 
-    fire_artillery(&grille_de_jeu, grille_bateaux, position_X, position_Y);
+    fire_tactical(&grille_de_jeu, grille_bateaux, position_X, position_Y);
 
     show_grid(grille_de_jeu);
 
@@ -73,6 +73,21 @@ void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y){
             (*grille).grille[X][b] = 'X';
         }else if(tableau_bateau.grille[X][b] == '_'){
             (*grille).grille[X][b] = 'O';;
+        }
+    }
+}
+
+void fire_tactical(Grid *grille, Grid tableau_bateau, int X, int Y){
+    int a, b;
+    for(a = 0; a < tableau_bateau.largeur; a++){
+        for(b = 0; b < tableau_bateau.largeur; b++){
+            if(tableau_bateau.grille[X][Y] != '_'){
+                if(tableau_bateau.grille[a][b] == tableau_bateau.grille[X][Y]){
+                    (*grille).grille[a][b] = 'X';
+                }
+            }else if(tableau_bateau.grille[X][Y] == '_'){
+                (*grille).grille[X][Y] = 'O';
+            }
         }
     }
 }
