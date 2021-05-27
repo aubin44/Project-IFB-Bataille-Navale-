@@ -161,22 +161,18 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau){
 }
 
 int chevauchement(Boat *bateau,int i, Grid grille_bateau){
-    int a, test;
+    int a, test = 0;
 
     if(bateau[i].orientation == 'H'){
         for(a = bateau[i].position_x; a - bateau[i].position_x < bateau[i].taille; a++){
             if(grille_bateau.grille[a][bateau[i].position_y] != '_'){
                 test = 1;
-            }else{
-                test = 0;
             }
         }
     }else{
         for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){
             if(grille_bateau.grille[bateau[i].position_x][a] != '_'){
                 test = 1;
-            }else{
-                test = 0;
             }
         }
     }

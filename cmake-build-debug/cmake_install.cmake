@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New_project_ifb
+# Install script for directory: C:/Users/anais/CLionProjects/New-project-IFB
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New_project_ifb/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/anais/CLionProjects/New-project-IFB/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
