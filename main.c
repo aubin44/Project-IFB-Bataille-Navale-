@@ -5,6 +5,8 @@
 
 void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y);
 
+void fire_tactical();
+
 int main(){
     Grid grille_de_jeu, grille_bateaux;
     Boat bateau[5];
@@ -40,7 +42,7 @@ int main(){
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
-
+    show_grid(grille_bateaux);
     printf("Dans quelle colonne souhaitez vous tirer :");
     scanf("%d", &position_X);
     printf("Dans quelle ligne souhaitez vous tirer :");
@@ -51,7 +53,7 @@ int main(){
     printf("%d\n", position_Y);
 
     fire_artillery(&grille_de_jeu, grille_bateaux, position_X, position_Y);
-    show_grid(grille_bateaux);
+
     show_grid(grille_de_jeu);
 
     return 0;
@@ -59,14 +61,14 @@ int main(){
 
 void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y){
     int a, b;
-    for(a = 0; a < 10; a++) {
-        if (tableau_bateau.grille[a][Y] == 'O') {
+    for(a = 0; a < tableau_bateau.largeur; a++) {
+        if (tableau_bateau.grille[a][Y] != '_') {
             (*grille).grille[a][Y] = 'X';
         } else if (tableau_bateau.grille[a][Y] == '_') {
             (*grille).grille[a][Y] = 'O';
         }
     }
-    for(b = 0; b < 10; b++){
+    for(b = 0; b < tableau_bateau.hauteur; b++){
         if(tableau_bateau.grille[X][b] == 'O'){
             (*grille).grille[X][b] = 'X';
         }else if(tableau_bateau.grille[X][b] == '_'){

@@ -49,11 +49,11 @@ void placement_bateaux(Boat bateau[], int i, Grid *grille_bateaux){
     int a;
     if(bateau[i].orientation == 'H'){                                                       //Si l'orientation du bateau est 'H' parcourir les abscisses
         for(a = bateau[i].position_x; a < bateau[i].position_x + bateau[i].taille; a++){    //Du point généré x jusqu'au point x + la taille du bateau
-            (*grille_bateaux).grille[a][bateau[i].position_y] = 'O';
+            (*grille_bateaux).grille[a][bateau[i].position_y] = 'a'+i;
         }
     }else{                                                                                  //Si l'orientation du bateau est 'V' parcourir les ordonnées
         for(a = bateau[i].position_y; a < bateau[i].position_y + bateau[i].taille; a++){    //Du point généré x jusqu'au point x + la taille du bateau
-            (*grille_bateaux).grille[bateau[i].position_x][a] = 'O';
+            (*grille_bateaux).grille[bateau[i].position_x][a] = 'a'+i;
         }                                                                                   //Placer 'O' là où se trouve un bateau
     }
 }
