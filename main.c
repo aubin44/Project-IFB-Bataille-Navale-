@@ -3,6 +3,8 @@
 #include <time.h>
 #include "Depart_Grille.h"
 
+void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y);
+
 int main(){
     Grid grille_de_jeu, grille_bateaux;
     Boat bateau[5];
@@ -10,7 +12,9 @@ int main(){
     grille_de_jeu.largeur = 10;
     grille_bateaux.hauteur = 10;
     grille_bateaux.largeur = 10;
+    int position_X, position_Y;
     int i, a;
+    char buffer;
 
     srand(time(0));
 
@@ -23,7 +27,7 @@ int main(){
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
 
-    show_grid(grille_de_jeu);
+
 
     for(i = 0; i < 5; i++){
         do {
@@ -36,8 +40,37 @@ int main(){
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
+
+    printf("Dans quelle colonne souhaitez vous tirer :");
+    scanf("%d", &position_X);
+    printf("Dans quelle ligne souhaitez vous tirer :");
+    fflush(stdin);
+    buffer = getchar();
+    position_X = position_X - 1;
+    position_Y = buffer - 'A';
+    printf("%d\n", position_Y);
+
+    fire_artillery(&grille_de_jeu, grille_bateaux, position_X, position_Y);
     show_grid(grille_bateaux);
+    show_grid(grille_de_jeu);
 
     return 0;
 }
 
+void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y){
+    int a, b;
+    for(a = 0; a < 10; a++) {
+        if (tableau_bateau.grille[a][Y] == 'O') {
+            (*grille).grille[a][Y] = 'X';
+        } else if (tableau_bateau.grille[a][Y] == '_') {
+            (*grille).grille[a][Y] = 'O';
+        }
+    }
+    for(b = 0; b < 10; b++){
+        if(tableau_bateau.grille[X][b] == 'O'){
+            (*grille).grille[X][b] = 'X';
+        }else if(tableau_bateau.grille[X][b] == '_'){
+            (*grille).grille[X][b] = 'O';;
+        }
+    }
+}

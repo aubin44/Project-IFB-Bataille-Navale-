@@ -44,7 +44,7 @@ int app_grille(Boat bateau[], int i);
  * @param i
  * @param grille_bateaux
  */
-void placement_bateaux(Boat bateau[], int i, Grid *grille_bateaux);
+void placement_bateaux(Boat *bateau, int i, Grid *grille_bateaux);
 
 /**
  * Génere aléatoirement la position (x,y) ainsi que l'orientation 'H' ou 'V' d'un bateau
