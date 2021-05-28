@@ -28,7 +28,7 @@ void hard(Inventory *stuff);
 
 void choix_difficult(Inventory *stuff);
 
-void affichage();
+void affichage(Grid tableau_bateau);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -72,6 +72,7 @@ int main(){
     printf("Dans quelle ligne souhaitez vous tirer :");
     fflush(stdin);
     buffer = getchar();
+    buffer = toupper(buffer);
     position_X = position_X - 1;
     position_Y = buffer - 'A';
     printf("%d\n", position_Y);
@@ -80,6 +81,7 @@ int main(){
 
     show_grid(grille_de_jeu);
     show_grid(grille_bateaux);
+    affichage(grille_bateaux);
     return 0;
 }
 
@@ -206,4 +208,26 @@ void choix_difficult(Inventory *stuff){
         }
     }while (check == 1);
 
+}
+
+void affichage(Grid tableau_bateau){
+    int i,x, y;
+    int nb_case = 0, nb_bateau = 0;
+    for(i = 'a'; i<= 'e'; i++){
+        nb_case = 0;
+        for(x = 0; x < tableau_bateau.largeur; x++){
+            for(y = 0; y < tableau_bateau.hauteur; y++){
+                if(tableau_bateau.grille[x][y] == i){
+                    nb_case = nb_case + 1;
+                }
+            }
+        }
+        if(nb_case > 0){
+            nb_bateau = nb_bateau + 1;
+            printf("bateau%d : %d cases restantes\n", i - 'a' + 1, nb_case);
+        }else if(nb_case == 0){
+            printf("bateau%d : coule !\n", i - 'a' + 1);
+        }
+    }
+    printf("Il reste %d bateaux a couler\n", nb_bateau);
 }
