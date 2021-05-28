@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
+#include <string.h>
 #include "Depart_Grille.h"
 
 void fire_artillery(Grid *grille, Grid tableau_bateau, int X, int Y);
@@ -23,6 +25,8 @@ void easy(Inventory *stuff);
 void medium(Inventory *stuff);
 
 void hard(Inventory *stuff);
+
+void choix_difficult(Inventory *stuff);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -47,7 +51,7 @@ int main(){
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
 
-
+    choix_difficult(&stuff);
 
     for(i = 0; i < 5; i++){
         do {
@@ -138,6 +142,8 @@ void easy(Inventory *stuff){
     (*stuff).nb_missile_tactical = 10;
     (*stuff).nb_missile_bomb = 10;
     (*stuff).nb_missile_simple = 10;
+    printf("Vous avez :\n %d missile(s) d'artillerie\n %d missile(s) tactiques\n %d bombe(s)\n %d missile(s) simple",
+           (*stuff).nb_missile_artillery,(*stuff).nb_missile_tactical, (*stuff).nb_missile_bomb, (*stuff).nb_missile_simple);
 }
 
 void medium(Inventory *stuff){
@@ -145,6 +151,8 @@ void medium(Inventory *stuff){
     (*stuff).nb_missile_tactical = 5;
     (*stuff).nb_missile_bomb = 5;
     (*stuff).nb_missile_simple = 10;
+    printf("Vous avez :\n %d missile(s) d'artillerie\n %d missile(s) tactiques\n %d bombe(s)\n %d missile(s) simple",
+           (*stuff).nb_missile_artillery,(*stuff).nb_missile_tactical, (*stuff).nb_missile_bomb, (*stuff).nb_missile_simple);
 }
 
 void hard(Inventory *stuff){
@@ -152,4 +160,43 @@ void hard(Inventory *stuff){
     (*stuff).nb_missile_tactical = 4;
     (*stuff).nb_missile_bomb = 2;
     (*stuff).nb_missile_simple = 15;
+    printf("Vous avez :\n %d missile(s) d'artillerie\n %d missile(s) tactiques\n %d bombe(s)\n %d missile(s) simple",
+           (*stuff).nb_missile_artillery,(*stuff).nb_missile_tactical, (*stuff).nb_missile_bomb, (*stuff).nb_missile_simple);
+}
+
+void choix_difficult(Inventory *stuff){
+    char rep_facile[15] = "FACILE";
+    char rep_moyen[15] = "MOYEN";
+    char rep_difficile[15] = "DIFFICILE";
+    int check;
+    char rep[15];
+    int i = 0;
+
+    printf("Quel mode souhaitez-vous ? (Facile/Moyen/Difficile)\n");
+    gets(rep);
+    while(rep[i] != '\0') {
+        rep[i] = toupper(rep[i]);
+        i = i + 1;
+    }
+    do {
+        check = 0;
+        i = 0;
+
+        if(strcmp(rep, rep_facile) == 0){
+            easy(&stuff);
+        }else if(strcmp(rep, rep_moyen) == 0){
+            medium(&stuff);
+        }else if(strcmp(rep, rep_difficile) == 0){
+            hard(&stuff);
+        }else{
+            printf("La difficulte saisie est incorrect, veuillez saisir le mot complet (Facile/Moyen/Difficile) :\n");
+            gets(rep);
+            while(rep[i] != '\0') {
+                rep[i] = toupper(rep[i]);
+                i = i + 1;
+            }
+            check = 1;
+        }
+    }while (check == 1);
+
 }
