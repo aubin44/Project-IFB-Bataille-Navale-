@@ -11,9 +11,23 @@ void fire_bomb(Grid *grille, Grid tableau_bateau, int X, int Y);
 
 void fire_simple(Grid *grille, Grid tableau_bateau, int X, int Y);
 
+typedef struct{
+    int nb_missile_artillery;
+    int nb_missile_tactical;
+    int nb_missile_bomb;
+    int nb_missile_simple;
+}Inventory;
+
+void easy(Inventory *stuff);
+
+void medium(Inventory *stuff);
+
+void hard(Inventory *stuff);
+
 int main(){
     Grid grille_de_jeu, grille_bateaux;
     Boat bateau[5];
+    Inventory stuff;
     grille_de_jeu.hauteur = 10;     //Initialisation de la taille des grilles de jeu
     grille_de_jeu.largeur = 10;
     grille_bateaux.hauteur = 10;
@@ -117,4 +131,25 @@ void fire_simple(Grid *grille, Grid tableau_bateau, int X, int Y){
     }else if(tableau_bateau.grille[X][Y] != '_'){
          (*grille).grille[X][Y] = 'X';
      }
+}
+
+void easy(Inventory *stuff){
+    (*stuff).nb_missile_artillery = 10;
+    (*stuff).nb_missile_tactical = 10;
+    (*stuff).nb_missile_bomb = 10;
+    (*stuff).nb_missile_simple = 10;
+}
+
+void medium(Inventory *stuff){
+    (*stuff).nb_missile_artillery = 3;
+    (*stuff).nb_missile_tactical = 5;
+    (*stuff).nb_missile_bomb = 5;
+    (*stuff).nb_missile_simple = 10;
+}
+
+void hard(Inventory *stuff){
+    (*stuff).nb_missile_artillery = 1;
+    (*stuff).nb_missile_tactical = 4;
+    (*stuff).nb_missile_bomb = 2;
+    (*stuff).nb_missile_simple = 15;
 }
