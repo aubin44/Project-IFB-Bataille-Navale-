@@ -28,7 +28,11 @@ void hard(Inventory *stuff);
 
 void choix_difficult(Inventory *stuff);
 
-void affichage(Grid tableau_bateau);
+void bateaux_restants(Grid tableau_bateau);
+
+char choix_missile();
+
+void choix_coo_de_tir(int *Coo_X, int *Coo_Y);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -38,7 +42,7 @@ int main(){
     grille_de_jeu.largeur = 10;
     grille_bateaux.hauteur = 10;
     grille_bateaux.largeur = 10;
-    int position_X, position_Y;
+    int position_X, position_Y, Coo_X, Coo_Y;
     int i, a;
     char buffer;
 
@@ -52,7 +56,7 @@ int main(){
 
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
-
+    choix_missile();
     choix_difficult(&stuff);
 
     for(i = 0; i < 5; i++){
@@ -67,21 +71,14 @@ int main(){
 
     }
     show_grid(grille_bateaux);
-    printf("Dans quelle colonne souhaitez vous tirer :");
-    scanf("%d", &position_X);
-    printf("Dans quelle ligne souhaitez vous tirer :");
-    fflush(stdin);
-    buffer = getchar();
-    buffer = toupper(buffer);
-    position_X = position_X - 1;
-    position_Y = buffer - 'A';
-    printf("%d\n", position_Y);
 
-    fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, position_X, position_Y);
+    choix_coo_de_tir(&Coo_X, &Coo_Y);
+
+    fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
 
     show_grid(grille_de_jeu);
     show_grid(grille_bateaux);
-    affichage(grille_bateaux);
+    bateaux_restants(grille_bateaux);
     return 0;
 }
 
@@ -184,15 +181,15 @@ void choix_difficult(Inventory *stuff){
     printf("Quel mode souhaitez-vous ? (Facile/Moyen/Difficile)\n");
     gets(rep);
     while(rep[i] != '\0') {
-        rep[i] = toupper(rep[i]);
+        rep[i] = toupper(rep[i]);                           //On met toutes les lettres du mot tapé en majuscule afin d'éviter les erreurs
         i = i + 1;
     }
     do {
         check = 0;
         i = 0;
 
-        if(strcmp(rep, rep_facile) == 0){
-            easy(&stuff);
+        if(strcmp(rep, rep_facile) == 0){                  //On compare la chaine de caractère saisie au trois possibilités
+            easy(&stuff);                                  //(FACILE/MOYEN/DIFFICILE)
         }else if(strcmp(rep, rep_moyen) == 0){
             medium(&stuff);
         }else if(strcmp(rep, rep_difficile) == 0){
@@ -206,15 +203,15 @@ void choix_difficult(Inventory *stuff){
             }
             check = 1;
         }
-    }while (check == 1);
+    }while (check == 1);                                  //On répète tant que la chaine de caractères saisie ne correspond pas aux attentes
 
 }
 
-void affichage(Grid tableau_bateau){
+void bateaux_restants(Grid tableau_bateau){
     int i,x, y;
     int nb_case = 0, nb_bateau = 0;
-    for(i = 'a'; i<= 'e'; i++){
-        nb_case = 0;
+    for(i = 'a'; i<= 'e'; i++){                             //On utilise les caractères de marquage (a/b/c/d/e/A/B/C/D/E) placé dans le tableau contenant les bateau
+        nb_case = 0;                                        //Cela nous permet de savoir combien de case ont été touchées par bateau
         for(x = 0; x < tableau_bateau.largeur; x++){
             for(y = 0; y < tableau_bateau.hauteur; y++){
                 if(tableau_bateau.grille[x][y] == i){
@@ -222,12 +219,36 @@ void affichage(Grid tableau_bateau){
                 }
             }
         }
-        if(nb_case > 0){
+        if(nb_case > 0){                                    //Si le nombre de case non touchées est supérieur à 0 cela signifie que le bateau n'est pas coulé
             nb_bateau = nb_bateau + 1;
             printf("bateau%d : %d cases restantes\n", i - 'a' + 1, nb_case);
-        }else if(nb_case == 0){
+        }else if(nb_case == 0){                             //Si le nombre de case non touchées est de 0 cela signifie que le bateau est coulé
             printf("bateau%d : coule !\n", i - 'a' + 1);
         }
     }
     printf("Il reste %d bateaux a couler\n", nb_bateau);
+}
+
+char choix_missile(){
+    char rep;
+
+    printf("Quel missile souhaitez vous utiliser ?\n");
+    printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n -B : Pour bombe\n -S : Pour missile simple\n");
+    rep = getchar();
+    rep = toupper(rep);
+    return rep;
+}
+
+void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
+    int position_X, position_Y;
+    char buffer;
+
+    printf("Dans quelle colonne souhaitez vous tirer :");
+    scanf("%d", &position_X);
+    printf("Dans quelle ligne souhaitez vous tirer :");
+    fflush(stdin);
+    buffer = getchar();
+    buffer = toupper(buffer);
+    *Coo_X = position_X - 1;
+    *Coo_Y = buffer - 'A';
 }
