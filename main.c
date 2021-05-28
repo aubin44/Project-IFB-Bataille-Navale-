@@ -30,9 +30,11 @@ void choix_difficult(Inventory *stuff);
 
 void bateaux_restants(Grid tableau_bateau);
 
-char choix_missile();
+void choix_missile(char *missile);
 
 void choix_coo_de_tir(int *Coo_X, int *Coo_Y);
+
+int tir(int Coo_X, int Coo_Y, Grid grille_jeu, Grid grille_bateau, char missile);
 
 int main(){
     Grid grille_de_jeu, grille_bateaux;
@@ -44,7 +46,7 @@ int main(){
     grille_bateaux.largeur = 10;
     int position_X, position_Y, Coo_X, Coo_Y;
     int i, a;
-    char buffer;
+    char buffer, missile;
 
     srand(time(0));
 
@@ -56,7 +58,7 @@ int main(){
 
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
-    choix_missile();
+    /*choix_missile();*/
     choix_difficult(&stuff);
 
     for(i = 0; i < 5; i++){
@@ -74,7 +76,10 @@ int main(){
 
     choix_coo_de_tir(&Coo_X, &Coo_Y);
 
-    fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
+    choix_missile(&missile);
+
+    tir(Coo_X, Coo_Y, grille_de_jeu, grille_bateaux, missile);
+    /*fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);*/
 
     show_grid(grille_de_jeu);
     show_grid(grille_bateaux);
@@ -229,14 +234,14 @@ void bateaux_restants(Grid tableau_bateau){
     printf("Il reste %d bateaux a couler\n", nb_bateau);
 }
 
-char choix_missile(){
+void choix_missile(char *missile){
     char rep;
 
     printf("Quel missile souhaitez vous utiliser ?\n");
     printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n -B : Pour bombe\n -S : Pour missile simple\n");
     rep = getchar();
     rep = toupper(rep);
-    return rep;
+    *missile = rep;
 }
 
 void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
@@ -251,4 +256,17 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     buffer = toupper(buffer);
     *Coo_X = position_X - 1;
     *Coo_Y = buffer - 'A';
+}
+
+int tir(int Coo_X, int Coo_Y, Grid grille_jeu, Grid grille_bateau, char missile){
+
+    if(missile == 'A'){
+        fire_artillery(&grille_jeu, grille_bateau, &grille_bateau, Coo_X, Coo_Y);
+    }else if(missile == 'T'){
+        fire_tactical(&grille_jeu, grille_bateau, &grille_bateau, Coo_X, Coo_Y);
+    }else if(missile == 'B'){
+        fire_bomb(&grille_jeu, &grille_bateau, Coo_X, Coo_Y);
+    }else if(missile == 'S'){
+        fire_simple(&grille_jeu, &grille_bateau, Coo_X, Coo_Y);
+    }
 }
