@@ -80,6 +80,18 @@
 		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/Depart_Grille.h">
 			<Option target="New_project_ifb"/>
 		</Unit>
+		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/Etat_Grille.c">
+			<Option target="New_project_ifb"/>
+		</Unit>
+		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/Etat_Grille.h">
+			<Option target="New_project_ifb"/>
+		</Unit>
+		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/Execution_tir.c">
+			<Option target="New_project_ifb"/>
+		</Unit>
+		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/Execution_tir.h">
+			<Option target="New_project_ifb"/>
+		</Unit>
 		<Unit filename="C:/Users/Administrateur/OneDrive - Universite De Technologie De Belfort-Montbeliard/New-project-IFB/main.c">
 			<Option target="New_project_ifb"/>
 		</Unit>

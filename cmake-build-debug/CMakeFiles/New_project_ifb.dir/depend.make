@@ -4,6 +4,16 @@
 CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj: ../Depart_Grille.c
 CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj: ../Depart_Grille.h
 
+CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj: ../Depart_Grille.h
+CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj: ../Etat_Grille.c
+CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj: ../Etat_Grille.h
+
+CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj: ../Depart_Grille.h
+CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj: ../Execution_tir.c
+CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj: ../Execution_tir.h
+
 CMakeFiles/New_project_ifb.dir/main.c.obj: ../Depart_Grille.h
+CMakeFiles/New_project_ifb.dir/main.c.obj: ../Etat_Grille.h
+CMakeFiles/New_project_ifb.dir/main.c.obj: ../Execution_tir.h
 CMakeFiles/New_project_ifb.dir/main.c.obj: ../main.c
 

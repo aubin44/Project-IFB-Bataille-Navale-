@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj"
+  "CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj"
+  "CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj"
   "CMakeFiles/New_project_ifb.dir/main.c.obj"
   "New_project_ifb.exe"
   "New_project_ifb.exe.manifest"

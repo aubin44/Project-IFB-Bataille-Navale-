@@ -168,6 +168,60 @@ Depart_Grille.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Depart_Grille.c.s
 .PHONY : Depart_Grille.c.s
 
+Etat_Grille.obj: Etat_Grille.c.obj
+
+.PHONY : Etat_Grille.obj
+
+# target to build an object file
+Etat_Grille.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj
+.PHONY : Etat_Grille.c.obj
+
+Etat_Grille.i: Etat_Grille.c.i
+
+.PHONY : Etat_Grille.i
+
+# target to preprocess a source file
+Etat_Grille.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.i
+.PHONY : Etat_Grille.c.i
+
+Etat_Grille.s: Etat_Grille.c.s
+
+.PHONY : Etat_Grille.s
+
+# target to generate assembly for a file
+Etat_Grille.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.s
+.PHONY : Etat_Grille.c.s
+
+Execution_tir.obj: Execution_tir.c.obj
+
+.PHONY : Execution_tir.obj
+
+# target to build an object file
+Execution_tir.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj
+.PHONY : Execution_tir.c.obj
+
+Execution_tir.i: Execution_tir.c.i
+
+.PHONY : Execution_tir.i
+
+# target to preprocess a source file
+Execution_tir.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Execution_tir.c.i
+.PHONY : Execution_tir.c.i
+
+Execution_tir.s: Execution_tir.c.s
+
+.PHONY : Execution_tir.s
+
+# target to generate assembly for a file
+Execution_tir.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Execution_tir.c.s
+.PHONY : Execution_tir.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -207,6 +261,12 @@ help:
 	@echo ... Depart_Grille.obj
 	@echo ... Depart_Grille.i
 	@echo ... Depart_Grille.s
+	@echo ... Etat_Grille.obj
+	@echo ... Etat_Grille.i
+	@echo ... Etat_Grille.s
+	@echo ... Execution_tir.obj
+	@echo ... Execution_tir.i
+	@echo ... Execution_tir.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

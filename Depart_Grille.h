@@ -18,6 +18,13 @@ typedef struct{
     int largeur;
 }Grid;
 
+typedef struct{
+    int nb_missile_artillery;
+    int nb_missile_tactical;
+    int nb_missile_bomb;
+    int nb_missile_simple;
+}Inventory;
+
 /**
  * Initialise la grille
  * @param grille
@@ -62,5 +69,13 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau);
  * @return 0 si le bateau ne chevauche pas d'autres bateaux 1 sinon
  */
 int chevauchement(Boat *bateau,int i, Grid grille_bateau);
+
+void choix_difficult(Inventory *stuff);
+
+void easy(Inventory *stuff);
+
+void medium(Inventory *stuff);
+
+void hard(Inventory *stuff);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H
