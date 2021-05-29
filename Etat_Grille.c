@@ -26,3 +26,8 @@ void bateaux_restants(Grid tableau_bateau){
     }
     printf("Il reste %d bateaux a couler\n", nb_bateau);
 }
+
+void missiles_restants(Inventory missile){
+    printf("Il vous reste :\n %d missile(s) d'artillerie\n %d missile(s) tactiques\n %d bombe(s)\n %d missile(s) simple\n",
+           missile.nb_missile_artillery, missile.nb_missile_tactical, missile.nb_missile_bomb, missile.nb_missile_simple);
+}

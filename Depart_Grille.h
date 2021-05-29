@@ -70,7 +70,7 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau);
  */
 int chevauchement(Boat *bateau,int i, Grid grille_bateau);
 
-void choix_difficult(Inventory *stuff);
+void choix_difficult(Inventory stuff);
 
 void easy(Inventory *stuff);
 

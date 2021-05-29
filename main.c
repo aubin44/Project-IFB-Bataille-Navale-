@@ -15,9 +15,9 @@ int main(){
     grille_de_jeu.largeur = 10;
     grille_bateaux.hauteur = 10;
     grille_bateaux.largeur = 10;
-    int position_X, position_Y, Coo_X, Coo_Y;
-    int i, a;
-    char buffer, missile;
+    int Coo_X, Coo_Y;
+    int i;
+    char missile;
 
     srand(time(0));
 
@@ -29,7 +29,9 @@ int main(){
 
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
-    choix_difficult(&stuff);
+    choix_difficult(stuff);
+    /*easy(&stuff);*/
+    printf("%d\n", stuff.nb_missile_simple);
 
     for(i = 0; i < 5; i++){
         do {
@@ -50,17 +52,24 @@ int main(){
 
     if(missile == 'A'){
         fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
+        stuff.nb_missile_artillery = stuff.nb_missile_artillery - 1;
     }else if(missile == 'T'){
         fire_tactical(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
+        stuff.nb_missile_tactical = stuff.nb_missile_tactical - 1;
     }else if(missile == 'B'){
         fire_bomb(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
+        stuff.nb_missile_bomb = stuff.nb_missile_bomb - 1;
     }else if(missile == 'S'){
         fire_simple(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
+        stuff.nb_missile_simple = stuff.nb_missile_simple - 1;
     }else {
         printf("ERREUR");
     }
 
     show_grid(grille_de_jeu);
+
+    missiles_restants(stuff);
+
     show_grid(grille_bateaux);
     bateaux_restants(grille_bateaux);
     return 0;
