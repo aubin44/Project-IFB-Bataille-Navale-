@@ -29,9 +29,7 @@ int main(){
 
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
-    choix_difficult(stuff);
-    /*easy(&stuff);*/
-    printf("%d\n", stuff.nb_missile_simple);
+    choix_difficult(&stuff);
 
     for(i = 0; i < 5; i++){
         do {
@@ -50,16 +48,16 @@ int main(){
 
     choix_coo_de_tir(&Coo_X, &Coo_Y);
 
-    if(missile == 'A'){
+    if(missile == 'A' && stuff.nb_missile_artillery > 0){
         fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
         stuff.nb_missile_artillery = stuff.nb_missile_artillery - 1;
-    }else if(missile == 'T'){
+    }else if(missile == 'T' && stuff.nb_missile_tactical > 0){
         fire_tactical(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
         stuff.nb_missile_tactical = stuff.nb_missile_tactical - 1;
-    }else if(missile == 'B'){
+    }else if(missile == 'B' && stuff.nb_missile_bomb > 0){
         fire_bomb(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
         stuff.nb_missile_bomb = stuff.nb_missile_bomb - 1;
-    }else if(missile == 'S'){
+    }else if(missile == 'S' && stuff.nb_missile_simple > 0){
         fire_simple(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
         stuff.nb_missile_simple = stuff.nb_missile_simple - 1;
     }else {
@@ -68,9 +66,8 @@ int main(){
 
     show_grid(grille_de_jeu);
 
-    missiles_restants(stuff);
-
     show_grid(grille_bateaux);
+    missiles_restants(stuff);
     bateaux_restants(grille_bateaux);
     return 0;
 }
