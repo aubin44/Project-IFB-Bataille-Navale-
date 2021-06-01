@@ -48,9 +48,21 @@ void fire_tactical(Grid *grille, Grid *bateau, int X, int Y){
 void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y){
     int rayon = 1;                                                                          //On définit un rayon d'impact de la bombe
     int a, b;
-
-    for(a = X-rayon; a <= X+rayon; a++){
-        for(b = Y-rayon; b <= Y+rayon; b++){                                                //On parcourt dans le tableau de bateaux toute la zone autour du point d'impact de rayon prédéfinit
+    int Xmin = X - rayon, Xmax = X + rayon, Ymin = Y - rayon, Ymax = Y + rayon;
+    if (Xmin < 0){
+        Xmin = 0;
+    }
+    if(Xmax > (*tableau_bateau).largeur - 1){
+        Xmax = (*tableau_bateau).largeur - 1;
+    }
+    if(Ymin < 0){
+        Ymin = 0;
+    }
+    if(Ymax > (*tableau_bateau).hauteur - 1){
+        Ymax = (*tableau_bateau).hauteur - 1;
+    }
+    for(a = Xmin; a <= Xmax; a++){
+        for(b = Ymin; b <= Ymax; b++){                                                //On parcourt dans le tableau de bateaux toute la zone autour du point d'impact de rayon prédéfinit
             if((*tableau_bateau).grille[a][b] == '_'){                                      //Si la case est de l'eau
                 (*grille).grille[a][b] = 'O';                                               //La case correspondante dans la grille de jeu affiche 'O'
             }else if((*tableau_bateau).grille[a][b] != '_'){                                //Si la case est un bateau
