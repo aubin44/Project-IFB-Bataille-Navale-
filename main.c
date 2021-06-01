@@ -18,7 +18,6 @@ int main(){
     int i;
     int check, nb_bateau;
     char missile;
-
     srand(time(0));
 
     bateau[0].taille = 5;           //Initialisation de la taille des 5 bateaux
@@ -42,12 +41,16 @@ int main(){
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
-    /*show_grid(grille_bateaux);*/                      //Vérif code
+    show_grid(grille_bateaux);                      //Vérif code
 
 
     do {
         check_loose(stuff);
         choix_coo_de_tir(&Coo_X, &Coo_Y);
+        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){
+            printf("Vous avez déjà tirez sur cette case !");
+            choix_coo_de_tir(&Coo_X, &Coo_Y);
+        }
         do {
             check = 0;
             choix_missile(&missile);
@@ -55,7 +58,7 @@ int main(){
         } while (check == 1);
         show_grid(grille_de_jeu);
 
-        /*show_grid(grille_bateaux);*/                  //Verif code
+        show_grid(grille_bateaux);                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
