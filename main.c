@@ -17,6 +17,7 @@ int main(){
     grille_bateaux.largeur = 10;
     int Coo_X, Coo_Y;
     int i;
+    int check;
     char missile;
 
     srand(time(0));
@@ -44,26 +45,30 @@ int main(){
     }
     show_grid(grille_bateaux);
 
-    choix_missile(&missile);
+
 
     choix_coo_de_tir(&Coo_X, &Coo_Y);
+    do {
+        check = 0;
+        choix_missile(&missile);
 
-    if(missile == 'A' && stuff.nb_missile_artillery > 0){
-        fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
-        stuff.nb_missile_artillery = stuff.nb_missile_artillery - 1;
-    }else if(missile == 'T' && stuff.nb_missile_tactical > 0){
-        fire_tactical(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
-        stuff.nb_missile_tactical = stuff.nb_missile_tactical - 1;
-    }else if(missile == 'B' && stuff.nb_missile_bomb > 0){
-        fire_bomb(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
-        stuff.nb_missile_bomb = stuff.nb_missile_bomb - 1;
-    }else if(missile == 'S' && stuff.nb_missile_simple > 0){
-        fire_simple(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
-        stuff.nb_missile_simple = stuff.nb_missile_simple - 1;
-    }else {
-        printf("ERREUR");
-    }
-
+        if (missile == 'A' && stuff.nb_missile_artillery > 0) {
+            fire_artillery(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
+            stuff.nb_missile_artillery = stuff.nb_missile_artillery - 1;
+        } else if (missile == 'T' && stuff.nb_missile_tactical > 0) {
+            fire_tactical(&grille_de_jeu, grille_bateaux, &grille_bateaux, Coo_X, Coo_Y);
+            stuff.nb_missile_tactical = stuff.nb_missile_tactical - 1;
+        } else if (missile == 'B' && stuff.nb_missile_bomb > 0) {
+            fire_bomb(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
+            stuff.nb_missile_bomb = stuff.nb_missile_bomb - 1;
+        } else if (missile == 'S' && stuff.nb_missile_simple > 0) {
+            fire_simple(&grille_de_jeu, &grille_bateaux, Coo_X, Coo_Y);
+            stuff.nb_missile_simple = stuff.nb_missile_simple - 1;
+        } else {
+            printf("ERREUR, vous n'avez plus de ce missile");
+            check = 1;
+        }
+    }while(check == 1);
     show_grid(grille_de_jeu);
 
     show_grid(grille_bateaux);

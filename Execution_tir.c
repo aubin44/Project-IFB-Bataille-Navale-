@@ -70,10 +70,24 @@ void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y){
 void choix_missile(char *missile){
     char rep;
 
-    printf("Quel missile souhaitez vous utiliser ?\n");
-    printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n -B : Pour bombe\n -S : Pour missile simple\n");
-    rep = getchar();
-    rep = toupper(rep);
+
+        printf("Veuillez saisir un des missiles suivants :\n");
+        printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
+               " -B : Pour bombe\n -S : Pour missile simple\n");
+    fflush(stdin);
+        rep = getchar();
+        rep = toupper(rep);
+
+    while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){
+        printf("ERREUR ! Veuillez saisir un missile existant !\n");
+        printf("Veuillez saisir un des missiles suivants :\n");
+        printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
+               " -B : Pour bombe\n -S : Pour missile simple\n");
+        fflush(stdin);
+        rep = getchar();
+        rep = toupper(rep);
+    }
+
     *missile = rep;
 }
 
