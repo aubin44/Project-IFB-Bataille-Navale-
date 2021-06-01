@@ -1,9 +1,9 @@
 //
 // Created by Administrateur on 29/05/2021.
 //
-
 #include "Etat_Grille.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void bateaux_restants(Grid tableau_bateau, int *bateau){
     int i,x, y;
@@ -31,4 +31,12 @@ void bateaux_restants(Grid tableau_bateau, int *bateau){
 void missiles_restants(Inventory missile){
     printf("Il vous reste :\n %d missile(s) d'artillerie\n %d missile(s) tactiques\n %d bombe(s)\n %d missile(s) simple\n",
            missile.nb_missile_artillery, missile.nb_missile_tactical, missile.nb_missile_bomb, missile.nb_missile_simple);
+}
+
+void check_loose(Inventory nb_missile){
+    if(nb_missile.nb_missile_artillery == 0 && nb_missile.nb_missile_bomb == 0
+       && nb_missile.nb_missile_simple == 0 && nb_missile.nb_missile_tactical == 0){
+        printf("Vous n'avez plus de missiles. Vous avez perdu !");
+        return exit(0);
+    }
 }

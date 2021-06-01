@@ -14,4 +14,6 @@ void bateaux_restants(Grid tableau_bateau, int *bateau);
 
 void missiles_restants(Inventory missile);
 
+void check_loose(Inventory nb_missile);
+
 #endif //NEW_PROJECT_IFB_ETAT_GRILLE_H

@@ -1,10 +1,10 @@
 //
 // Created by Administrateur on 29/05/2021.
 //
-
 #include "Execution_tir.h"
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void fire_artillery(Grid *grille, Grid tableau_bateau, Grid *bateau, int X, int Y){
     int a, b;
@@ -71,12 +71,12 @@ void choix_missile(char *missile){
     char rep;
 
 
-        printf("Veuillez saisir un des missiles suivants :\n");
-        printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
-               " -B : Pour bombe\n -S : Pour missile simple\n");
+    printf("Veuillez saisir un des missiles suivants :\n");
+    printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
+           " -B : Pour bombe\n -S : Pour missile simple\n");
     fflush(stdin);
-        rep = getchar();
-        rep = toupper(rep);
+    rep = getchar();
+    rep = toupper(rep);
 
     while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){
         printf("ERREUR ! Veuillez saisir un missile existant !\n");
@@ -95,12 +95,25 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     int position_X, position_Y;
     char buffer;
 
+
     printf("Dans quelle colonne souhaitez vous tirer :");
     scanf("%d", &position_X);
+    while (position_X < 1 || position_X > 10){
+        printf("Veuillez saisir une valeure comprise dans l'intervalle [1;10]\n");
+        printf("Dans quelle colonne souhaitez vous tirer :\n");
+        scanf("%d", &position_X);
+    }
     printf("Dans quelle ligne souhaitez vous tirer :");
     fflush(stdin);
     buffer = getchar();
     buffer = toupper(buffer);
+    while (buffer - 'A' < 1 || buffer - 'A' > 10){
+        printf("Veuillez saisir une lettre entre A et J ");
+        printf("Dans quelle ligne souhaitez vous tirer :");
+        fflush(stdin);
+        buffer = getchar();
+        buffer = toupper(buffer);
+    }
     *Coo_X = position_X - 1;
     *Coo_Y = buffer - 'A';
 }
