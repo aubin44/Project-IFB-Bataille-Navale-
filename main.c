@@ -41,14 +41,14 @@ int main(){
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
-    show_grid(grille_bateaux);                      //Vérif code
+    /*show_grid(grille_bateaux);*/                      //Vérif code
 
 
     do {
         check_loose(stuff);
-        choix_coo_de_tir(&Coo_X, &Coo_Y);
-        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){
-            printf("Vous avez déjà tirez sur cette case !");
+        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
+        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
+            printf("Vous avez deja tirez sur cette case !");
             choix_coo_de_tir(&Coo_X, &Coo_Y);
         }
         do {
@@ -58,7 +58,7 @@ int main(){
         } while (check == 1);
         show_grid(grille_de_jeu);
 
-        show_grid(grille_bateaux);                  //Verif code
+        /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
