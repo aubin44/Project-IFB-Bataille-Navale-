@@ -110,7 +110,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     fflush(stdin);
     buffer = getchar();
     buffer = toupper(buffer);
-    while (buffer - 'A' < 1 || buffer - 'A' > 10){
+    while (buffer - 'A' < 0 || buffer - 'A' > 9){
         printf("Veuillez saisir une lettre entre A et J ");
         printf("Dans quelle ligne souhaitez vous tirer :");
         fflush(stdin);
@@ -119,4 +119,24 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     }
     *Coo_X = position_X - 1;
     *Coo_Y = buffer - 'A';
+}
+
+void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check){
+    (*check) = 0;
+    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {
+        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        (*stuff).nb_missile_artillery -= 1;
+    } else if (missile == 'T' && (*stuff).nb_missile_tactical > 0) {
+        fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        (*stuff).nb_missile_tactical -= 1;
+    } else if (missile == 'B' && (*stuff).nb_missile_bomb > 0) {
+        fire_bomb(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        (*stuff).nb_missile_bomb -= 1;
+    } else if (missile == 'S' && (*stuff).nb_missile_simple > 0) {
+        fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        (*stuff).nb_missile_simple -= 1;
+    } else {
+        printf("ERREUR, vous n'avez plus de ce missile");
+        (*check) = 1;
+    }
 }
