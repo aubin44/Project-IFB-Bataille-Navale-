@@ -10,7 +10,7 @@
  * Compte le nombre de bateaux non coulé dans le tableau de bateaux ainsi que le nombre de cases restantes par bateau
  * @param tableau_bateau
  */
-void bateaux_restants(Grid tableau_bateau);
+void bateaux_restants(Grid tableau_bateau, int *bateau);
 
 void missiles_restants(Inventory missile);
 

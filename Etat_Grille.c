@@ -5,7 +5,7 @@
 #include "Etat_Grille.h"
 #include <stdio.h>
 
-void bateaux_restants(Grid tableau_bateau){
+void bateaux_restants(Grid tableau_bateau, int *bateau){
     int i,x, y;
     int nb_case = 0, nb_bateau = 0;
     for(i = 'a'; i<= 'e'; i++){                             //On utilise les caractères de marquage (a/b/c/d/e/A/B/C/D/E) placé dans le tableau contenant les bateau
@@ -25,6 +25,7 @@ void bateaux_restants(Grid tableau_bateau){
         }
     }
     printf("Il reste %d bateaux a couler\n", nb_bateau);
+    (*bateau) = nb_bateau;
 }
 
 void missiles_restants(Inventory missile){
