@@ -72,4 +72,6 @@ int chevauchement(Boat *bateau,int i, Grid grille_bateau);
 
 void choix_difficult(Inventory *stuff);
 
+void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
+
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

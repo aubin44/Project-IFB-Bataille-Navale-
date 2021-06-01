@@ -3,6 +3,8 @@
 //
 
 #include "Depart_Grille.h"
+#include "Etat_Grille.h"
+#include "Execution_tir.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -140,4 +142,32 @@ void choix_difficult(Inventory *stuff){
         }
     }while (check == 1);                                  //On répète tant que la chaine de caractères saisie ne correspond pas aux attentes
 
+}
+
+void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
+    int check, nb_bateau;
+    char missile;
+
+    choix_difficult(&stuff);
+    do {
+        check_loose(stuff);
+        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
+        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
+            printf("Vous avez deja tirez sur cette case !");
+            choix_coo_de_tir(&Coo_X, &Coo_Y);
+        }
+        do {
+            check = 0;
+            choix_missile(&missile);
+            tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check);
+        } while (check == 1);
+        show_grid(grille_de_jeu);
+
+        /*show_grid(grille_bateaux);*/                  //Verif code
+        missiles_restants(stuff);
+        bateaux_restants(grille_bateaux, &nb_bateau);
+
+    }while(nb_bateau > 0);
+
+    printf("Youpi vous avez gagné !");
 }

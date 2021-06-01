@@ -33,18 +33,20 @@ void fire_artillery(Grid *grille, Grid *bateau, int X, int Y){
 void fire_tactical(Grid *grille, Grid *bateau, int X, int Y){
     int a, b;
     char position = (*bateau).grille[X][Y];
+    printf("(*bateau).grille[X][Y] : %c %d", (*bateau).grille[X][Y], (*bateau).grille[X][Y]);
     for(a = 0; a < (*bateau).largeur; a++){
         for(b = 0; b < (*bateau).hauteur; b++){                                //On parcourt tous le tableau de bateaux
-            if((*bateau).grille[X][Y] != '_'){                                 //Si le point d'impact est un bateau
+            if((*bateau).grille[X][Y] != '_' && (*bateau).grille[X][Y] != 'F'){                                 //Si le point d'impact est un bateau
                 if((*bateau).grille[a][b] == position){             //Pour toutes les cases de ce bateau
                     (*grille).grille[a][b] = 'X';                                   //Les cases correspondantes de la grille de jeu affiche 'X'
                     (*bateau).grille[a][b] = toupper((*bateau).grille[a][b]);       //Marquage des case contenant des bateaux touchés
                 }
-            }else if((*bateau).grille[X][Y] == '_'){                           //Si le point d'impact est de l'eau
-                (*grille).grille[X][Y] = 'O';                                       //La case correspondante de la grille de jeu affiche 'O'
-                (*bateau).grille[X][Y] = 'F';
             }
         }
+    }
+    if((*bateau).grille[X][Y] == '_'){
+        (*grille).grille[X][Y] = 'O';                                       //La case correspondante de la grille de jeu affiche 'O'
+        (*bateau).grille[X][Y] = 'F';
     }
 }
 
@@ -121,6 +123,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     while (position_X < 1 || position_X > 10){
         printf("Veuillez saisir une valeure comprise dans l'intervalle [1;10]\n");
         printf("Dans quelle colonne souhaitez vous tirer :\n");
+        fflush(stdin);
         scanf("%d", &position_X);
     }
     printf("Dans quelle ligne souhaitez vous tirer :");
