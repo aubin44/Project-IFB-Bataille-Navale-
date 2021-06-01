@@ -36,13 +36,13 @@ int main(){
             genere_bateau(&bateau, i, grille_bateaux);
 
         } while (app_grille(bateau, i) == 1 || chevauchement(bateau, i, grille_bateaux) == 1);
-        printf("Le bateau de taille %d et d'orientation %c se trouve en (%d,%c)\n", bateau[i].taille,
-               bateau[i].orientation, bateau[i].position_x + 1, 'A'+bateau[i].position_y);
+        /*printf("Le bateau de taille %d et d'orientation %c se trouve en (%d,%c)\n", bateau[i].taille,
+               bateau[i].orientation, bateau[i].position_x + 1, 'A'+bateau[i].position_y);*/                //Verif code
 
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
-    show_grid(grille_bateaux);
+    /*show_grid(grille_bateaux);*/                      //Vérif code
 
 
     do {
@@ -55,7 +55,7 @@ int main(){
         } while (check == 1);
         show_grid(grille_de_jeu);
 
-        show_grid(grille_bateaux);
+        /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
