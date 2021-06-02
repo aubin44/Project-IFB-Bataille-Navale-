@@ -74,4 +74,8 @@ void choix_difficult(Inventory *stuff);
 
 void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
 
+void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
+
+void affichage_cases_blind(Grid cases_touchees);
+
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

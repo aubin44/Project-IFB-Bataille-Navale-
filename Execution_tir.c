@@ -6,17 +6,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void fire_artillery(Grid *grille, Grid *bateau, int X, int Y){
+void fire_artillery(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees){
     int a, b;
     int i = 0;
 
     for(a = 0; a < (*bateau).largeur; a++) {                       //On parcourt la colonne de coordonnée Y du point d'impact dans le tableau de bateaux
         if ((*bateau).grille[a][Y] != '_' && (*bateau).grille[a][Y] != 'F') {                       //Lorsqu'une case sur cette colonne est un bateau
             (*grille).grille[a][Y] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
-            /*cases_touchées[i] = a + 1;
-            cases_touchées[i + 1] = Y + 'A';
-            i += 2;                                                             //ESSAI CODE
-            printf("Vous avez touche un bateau en (%d,%c)\n", a + 1, Y + 'A');*/
+            (*cases_touchees).grille[a][Y] = 'X';
             (*bateau).grille[a][Y] = toupper((*bateau).grille[a][Y]);   //Marquage des case contenant des bateaux touchés
         } else {                                                         //Lorsq'une case sur cette colonne est de l'eau
             (*grille).grille[a][Y] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
@@ -26,10 +23,7 @@ void fire_artillery(Grid *grille, Grid *bateau, int X, int Y){
     for(b = 0; b < (*bateau).hauteur; b++){                        //On parcourt la ligne de coordonnée X du point d'impact dans le tableau de bateaux
         if((*bateau).grille[X][b] != '_' && (*bateau).grille[X][b] != 'F'){                         //Lorsqu'une case sur cette ligne est un bateau
             (*grille).grille[X][b] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
-            /*cases_touchées[i] = X + 1;
-            cases_touchées[i + 1] = b + 'A';
-            i += 2;                                                             //ESSAI CODE
-            printf("Vous avez touche un bateau en (%d,%c)\n", X + 1, b + 'A');*/
+            (*cases_touchees).grille[X][b] = 'X';
             (*bateau).grille[X][b] = toupper((*bateau).grille[X][b]);   //Marquage des case contenant des bateaux touchés
         }else{                                                          //Lorsq'une case sur cette ligne est de l'eau
             (*grille).grille[X][b] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
@@ -38,15 +32,16 @@ void fire_artillery(Grid *grille, Grid *bateau, int X, int Y){
     }
 }
 
-void fire_tactical(Grid *grille, Grid *bateau, int X, int Y){
+void fire_tactical(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees){
     int a, b;
     char position = (*bateau).grille[X][Y];
-    printf("(*bateau).grille[X][Y] : %c %d", (*bateau).grille[X][Y], (*bateau).grille[X][Y]);
     for(a = 0; a < (*bateau).largeur; a++){
         for(b = 0; b < (*bateau).hauteur; b++){                                //On parcourt tous le tableau de bateaux
             if((*bateau).grille[X][Y] != '_' && (*bateau).grille[X][Y] != 'F'){                                 //Si le point d'impact est un bateau
                 if((*bateau).grille[a][b] == position){             //Pour toutes les cases de ce bateau
                     (*grille).grille[a][b] = 'X';                                   //Les cases correspondantes de la grille de jeu affiche 'X'
+                    (*cases_touchees).grille[a][b] = 'X';
+                    (*cases_touchees).grille[a][b] = 'X';
                     (*bateau).grille[a][b] = toupper((*bateau).grille[a][b]);       //Marquage des case contenant des bateaux touchés
                 }
             }
@@ -58,7 +53,7 @@ void fire_tactical(Grid *grille, Grid *bateau, int X, int Y){
     }
 }
 
-void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y){
+void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees){
     int rayon = 1;                                                                          //On définit un rayon d'impact de la bombe
     int a, b;
     int Xmin = X - rayon, Xmax = X + rayon, Ymin = Y - rayon, Ymax = Y + rayon;
@@ -81,19 +76,20 @@ void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y){
                 (*tableau_bateau).grille[a][b] = 'F';
             }else{                                //Si la case est un bateau
                 (*grille).grille[a][b] = 'X';                                               //La case correspondante dans la grille de jeu affiche 'X'
-
+                (*cases_touchees).grille[a][b] = 'X';
                 (*tableau_bateau).grille[a][b] = toupper((*tableau_bateau).grille[a][b]);   //Marquage des case contenant des bateaux touchés
             }
         }
     }
 }
 
-void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y){
+void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees){
     if((*tableau_bateau).grille[X][Y] == '_'){                                         //Si le point d'impact dans le tableau de bateaux est de l'eau
         (*grille).grille[X][Y] = 'O';                                                   //Le point correspondant sur la grille de jeu affiche 'O'
         (*tableau_bateau).grille[X][Y] = 'F';
     }else{                                                                              //Si le point d'impact dans le tableau de bateaux est un bateau
         (*grille).grille[X][Y] = 'X';                                                  //Le point correspondant sur la grille de jeu affiche 'X'
+        (*cases_touchees).grille[X][Y] = 'X';
         (*tableau_bateau).grille[X][Y] = toupper((*tableau_bateau).grille[X][Y]);      //Marquage des case contenant des bateaux touchés
     }
 }
@@ -151,22 +147,22 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     *Coo_Y = buffer - 'A';
 }
 
-void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check){
+void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check, Grid *cases_touchees){
     (*check) = 0;
-    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {                          // si le joueur sélectionne missile d'artillerie on vérifie qu'il reste ces missiles
-        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);                    // On appelle la fonction fire_artillery
-        (*stuff).nb_missile_artillery -= 1;                                             // puis on retire un missile de l'inventaire
+    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {
+        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
+        (*stuff).nb_missile_artillery -= 1;
     } else if (missile == 'T' && (*stuff).nb_missile_tactical > 0) {
-        fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
         (*stuff).nb_missile_tactical -= 1;
     } else if (missile == 'B' && (*stuff).nb_missile_bomb > 0) {
-        fire_bomb(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        fire_bomb(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
         (*stuff).nb_missile_bomb -= 1;
     } else if (missile == 'S' && (*stuff).nb_missile_simple > 0) {
-        fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
+        fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
         (*stuff).nb_missile_simple -= 1;
     } else {
         printf("ERREUR, vous n'avez plus de ce missile");
-        (*check) = 1;                                                                   // s'il n'y a plus de missile du type selectionné on check prend la valeur 1
+        (*check) = 1;
     }
 }

@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
+#include <string.h>
 #include "Depart_Grille.h"
 #include "Execution_tir.h"
 #include "Etat_Grille.h"
@@ -16,8 +18,8 @@ int main(){
     grille_bateaux.largeur = 10;
     int Coo_X, Coo_Y;
     int i;
-    int check, nb_bateau;
-    char missile;
+    int check, nb_bateau, check2;
+    char missile, rep;
     srand(time(0));
 
     bateau[0].taille = 5;           //Initialisation de la taille des 5 bateaux
@@ -26,6 +28,10 @@ int main(){
     bateau[3].taille = 3;
     bateau[4].taille = 2;
 
+    /*printf("char : %d octets\n", sizeof(char));
+    printf("int : %d octets\n", sizeof(int));
+    printf("long : %d octets\n", sizeof(long));
+    printf("double : %d octets\n", sizeof(double));*/
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
 
@@ -43,7 +49,24 @@ int main(){
     }
     show_grid(grille_bateaux);                      //Vérif code
 
-    classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+    do {
+        check2 = 0;
+        printf("Veuillez saisir le mode de jeu souhaité :\n -C : clasique\n -B : Blind\n -A : Active\n");
+        fflush(stdin);
+        rep = getchar();
+        rep = toupper(rep);
+
+        if (rep == 'C') {
+            classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+        } else if (rep == 'B') {
+            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+        } else if (rep == 'A') {
+            printf("Le mode active n'est pas terminé !\n");
+        } else {
+            printf("Le mode saisie n'existe pas !\n");
+            check2 = 1;
+        }
+    }while (check2 == 1);
 
     return 0;
 }

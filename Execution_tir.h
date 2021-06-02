@@ -7,13 +7,13 @@
 #include "Depart_Grille.h"
 
 
-void fire_artillery(Grid *grille, Grid *bateau, int X, int Y);
+void fire_artillery(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees);
 
-void fire_tactical(Grid *grille, Grid *bateau, int X, int Y);
+void fire_tactical(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees);
 
-void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y);
+void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees);
 
-void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y);
+void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees);
 
 void choix_missile(char *missile);
 
@@ -24,7 +24,7 @@ void choix_missile(char *missile);
  */
 void choix_coo_de_tir(int *Coo_X, int *Coo_Y);
 
-void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check);
+void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check, Grid *cases_touchees);
 
 
 #endif //NEW_PROJECT_IFB_EXECUTION_TIR_H

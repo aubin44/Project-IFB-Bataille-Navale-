@@ -1,7 +1,6 @@
 //
 // Created by anais on 27/05/2021.
 //
-
 #include "Depart_Grille.h"
 #include "Etat_Grille.h"
 #include "Execution_tir.h"
@@ -101,6 +100,7 @@ void choix_difficult(Inventory *stuff){
     int i = 0;
 
     printf("Quel mode souhaitez-vous ? (Facile/Moyen/Difficile)\n");
+    fflush(stdin);
     gets(rep);
     while(rep[i] != '\0') {
         rep[i] = toupper(rep[i]);                           //On met toutes les lettres du mot tapé en majuscule afin d'éviter les erreurs
@@ -148,9 +148,14 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
     int check, nb_bateau;
     char missile;
 
+    Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
+    cases_touchees.hauteur = 10;
+    cases_touchees.largeur = 10;
 
     choix_difficult(&stuff);
+
     do {
+        init_grille(&cases_touchees);
         check_loose(stuff);
         choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
         while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
@@ -160,8 +165,9 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
         do {
             check = 0;
             choix_missile(&missile);
-            tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check);
+            tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
         } while (check == 1);
+        show_grid(cases_touchees);
         show_grid(grille_de_jeu);
 
         show_grid(grille_bateaux);                  //Verif code
@@ -171,4 +177,53 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
     }while(nb_bateau > 0);
 
     printf("Youpi vous avez gagné !");
+}
+
+void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
+    int check, nb_bateau;
+    char missile;
+
+    Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
+    cases_touchees.hauteur = 10;
+    cases_touchees.largeur = 10;
+
+    choix_difficult(&stuff);
+
+    do {
+        init_grille(&cases_touchees);
+        check_loose(stuff);
+        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
+        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
+            printf("Vous avez deja tirez sur cette case !");
+            choix_coo_de_tir(&Coo_X, &Coo_Y);
+        }
+        do {
+            check = 0;
+            choix_missile(&missile);
+            tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
+        } while (check == 1);
+
+        affichage_cases_blind(cases_touchees);
+        show_grid(cases_touchees);
+        show_grid(grille_de_jeu);                    //Verif code
+
+        show_grid(grille_bateaux);                  //Verif code
+        missiles_restants(stuff);
+        bateaux_restants(grille_bateaux, &nb_bateau);
+
+    }while(nb_bateau > 0);
+
+    printf("Youpi vous avez gagné !");
+}
+
+void affichage_cases_blind(Grid cases_touchees){
+    int a, b;
+
+    for(a = 0; a < cases_touchees.largeur; a++){
+        for(b = 0; b < cases_touchees.hauteur; b++){
+            if(cases_touchees.grille[a][b] == 'X'){
+                printf("-Vous avez touche un bateau en (%d,%c)\n", a + 1, b + 'A');
+            }
+        }
+    }
 }
