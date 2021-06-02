@@ -153,6 +153,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
     cases_touchees.largeur = 10;
 
     choix_difficult(&stuff);
+    show_grid(grille_de_jeu);
 
     do {
         init_grille(&cases_touchees);
@@ -167,16 +168,16 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
             choix_missile(&missile);
             tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
         } while (check == 1);
-        show_grid(cases_touchees);
+
         show_grid(grille_de_jeu);
 
-        show_grid(grille_bateaux);                  //Verif code
+        /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
     }while(nb_bateau > 0);
 
-    printf("Youpi vous avez gagné !");
+    printf("Youpi vous avez gagne !");
 }
 
 void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
@@ -204,16 +205,15 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         } while (check == 1);
 
         affichage_cases_blind(cases_touchees);
-        show_grid(cases_touchees);
-        show_grid(grille_de_jeu);                    //Verif code
+        /*show_grid(grille_de_jeu);*/                    //Verif code
 
-        show_grid(grille_bateaux);                  //Verif code
+        /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
     }while(nb_bateau > 0);
 
-    printf("Youpi vous avez gagné !");
+    printf("Youpi vous avez gagne !");
 }
 
 void affichage_cases_blind(Grid cases_touchees){

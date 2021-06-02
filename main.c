@@ -28,10 +28,6 @@ int main(){
     bateau[3].taille = 3;
     bateau[4].taille = 2;
 
-    /*printf("char : %d octets\n", sizeof(char));
-    printf("int : %d octets\n", sizeof(int));
-    printf("long : %d octets\n", sizeof(long));
-    printf("double : %d octets\n", sizeof(double));*/
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
 
@@ -47,11 +43,11 @@ int main(){
         placement_bateaux(bateau, i, &grille_bateaux);
 
     }
-    show_grid(grille_bateaux);                      //Vérif code
+    /*show_grid(grille_bateaux);*/                      //Vérif code
 
     do {
         check2 = 0;
-        printf("Veuillez saisir le mode de jeu souhaité :\n -C : clasique\n -B : Blind\n -A : Active\n");
+        printf("Veuillez saisir le mode de jeu souhaité :\n -C : Mode Classique\n -B : Mode Blind\n -A : Mode Active\n");
         fflush(stdin);
         rep = getchar();
         rep = toupper(rep);
