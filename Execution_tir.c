@@ -153,9 +153,9 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
 
 void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check){
     (*check) = 0;
-    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {
-        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
-        (*stuff).nb_missile_artillery -= 1;
+    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {                          // si le joueur sélectionne missile d'artillerie on vérifie qu'il reste ces missiles
+        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);                    // On appelle la fonction fire_artillery
+        (*stuff).nb_missile_artillery -= 1;                                             // puis on retire un missile de l'inventaire
     } else if (missile == 'T' && (*stuff).nb_missile_tactical > 0) {
         fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y);
         (*stuff).nb_missile_tactical -= 1;
@@ -167,6 +167,6 @@ void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int mi
         (*stuff).nb_missile_simple -= 1;
     } else {
         printf("ERREUR, vous n'avez plus de ce missile");
-        (*check) = 1;
+        (*check) = 1;                                                                   // s'il n'y a plus de missile du type selectionné on check prend la valeur 1
     }
 }
