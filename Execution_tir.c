@@ -8,22 +8,30 @@
 
 void fire_artillery(Grid *grille, Grid *bateau, int X, int Y){
     int a, b;
-    printf("FA %d %d", X, Y);
+    int i = 0;
+
     for(a = 0; a < (*bateau).largeur; a++) {                       //On parcourt la colonne de coordonnée Y du point d'impact dans le tableau de bateaux
-        if ((*bateau).grille[a][Y] != '_') {                       //Lorsqu'une case sur cette colonne est un bateau
-            printf("FA2 %d %d", X, Y);
+        if ((*bateau).grille[a][Y] != '_' && (*bateau).grille[a][Y] != 'F') {                       //Lorsqu'une case sur cette colonne est un bateau
             (*grille).grille[a][Y] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
+            /*cases_touchées[i] = a + 1;
+            cases_touchées[i + 1] = Y + 'A';
+            i += 2;                                                             //ESSAI CODE
+            printf("Vous avez touche un bateau en (%d,%c)\n", a + 1, Y + 'A');*/
             (*bateau).grille[a][Y] = toupper((*bateau).grille[a][Y]);   //Marquage des case contenant des bateaux touchés
-        } else if ((*bateau).grille[a][Y] == '_') {                //Lorsq'une case sur cette colonne est de l'eau
+        } else {                                                         //Lorsq'une case sur cette colonne est de l'eau
             (*grille).grille[a][Y] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
             (*bateau).grille[a][Y] = 'F';
         }
     }
     for(b = 0; b < (*bateau).hauteur; b++){                        //On parcourt la ligne de coordonnée X du point d'impact dans le tableau de bateaux
-        if((*bateau).grille[X][b] != '_'){                         //Lorsqu'une case sur cette ligne est un bateau
+        if((*bateau).grille[X][b] != '_' && (*bateau).grille[X][b] != 'F'){                         //Lorsqu'une case sur cette ligne est un bateau
             (*grille).grille[X][b] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
+            /*cases_touchées[i] = X + 1;
+            cases_touchées[i + 1] = b + 'A';
+            i += 2;                                                             //ESSAI CODE
+            printf("Vous avez touche un bateau en (%d,%c)\n", X + 1, b + 'A');*/
             (*bateau).grille[X][b] = toupper((*bateau).grille[X][b]);   //Marquage des case contenant des bateaux touchés
-        }else if((*bateau).grille[X][b] == '_'){                   //Lorsq'une case sur cette ligne est de l'eau
+        }else{                                                          //Lorsq'une case sur cette ligne est de l'eau
             (*grille).grille[X][b] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
             (*bateau).grille[X][b] = 'F';
         }
@@ -68,11 +76,12 @@ void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y){
     }
     for(a = Xmin; a <= Xmax; a++){
         for(b = Ymin; b <= Ymax; b++){                                                //On parcourt dans le tableau de bateaux toute la zone autour du point d'impact de rayon prédéfinit
-            if((*tableau_bateau).grille[a][b] == '_'){                                      //Si la case est de l'eau
+            if((*tableau_bateau).grille[a][b] == '_' || (*tableau_bateau).grille[a][b] == 'F'){                                      //Si la case est de l'eau
                 (*grille).grille[a][b] = 'O';                                               //La case correspondante dans la grille de jeu affiche 'O'
                 (*tableau_bateau).grille[a][b] = 'F';
-            }else if((*tableau_bateau).grille[a][b] != '_'){                                //Si la case est un bateau
+            }else{                                //Si la case est un bateau
                 (*grille).grille[a][b] = 'X';                                               //La case correspondante dans la grille de jeu affiche 'X'
+
                 (*tableau_bateau).grille[a][b] = toupper((*tableau_bateau).grille[a][b]);   //Marquage des case contenant des bateaux touchés
             }
         }
@@ -83,7 +92,7 @@ void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y){
     if((*tableau_bateau).grille[X][Y] == '_'){                                         //Si le point d'impact dans le tableau de bateaux est de l'eau
         (*grille).grille[X][Y] = 'O';                                                   //Le point correspondant sur la grille de jeu affiche 'O'
         (*tableau_bateau).grille[X][Y] = 'F';
-    }else if((*tableau_bateau).grille[X][Y] != '_'){                                    //Si le point d'impact dans le tableau de bateaux est un bateau
+    }else{                                                                              //Si le point d'impact dans le tableau de bateaux est un bateau
         (*grille).grille[X][Y] = 'X';                                                  //Le point correspondant sur la grille de jeu affiche 'X'
         (*tableau_bateau).grille[X][Y] = toupper((*tableau_bateau).grille[X][Y]);      //Marquage des case contenant des bateaux touchés
     }

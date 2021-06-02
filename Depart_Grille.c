@@ -148,6 +148,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
     int check, nb_bateau;
     char missile;
 
+
     choix_difficult(&stuff);
     do {
         check_loose(stuff);
@@ -163,7 +164,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
         } while (check == 1);
         show_grid(grille_de_jeu);
 
-        /*show_grid(grille_bateaux);*/                  //Verif code
+        show_grid(grille_bateaux);                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 

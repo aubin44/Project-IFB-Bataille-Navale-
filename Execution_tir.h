@@ -26,4 +26,5 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y);
 
 void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check);
 
+
 #endif //NEW_PROJECT_IFB_EXECUTION_TIR_H
