@@ -147,6 +147,7 @@ void choix_difficult(Inventory *stuff){
 void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
     int check, nb_bateau;
     char missile;
+    char mode = 'C';
 
     Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
@@ -174,7 +175,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
         /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
-        save(grille_bateaux, stuff);
+        save(grille_bateaux, stuff, mode);
 
     }while(nb_bateau > 0);
 
@@ -184,6 +185,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
 void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
     int check, nb_bateau;
     char missile;
+    char mode = 'B';
 
     Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
@@ -211,7 +213,7 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
-
+        save(grille_bateaux, stuff, mode);
 
     }while(nb_bateau > 0);
 
@@ -230,10 +232,11 @@ void affichage_cases_blind(Grid cases_touchees){
     }
 }
 
-void save(Grid tableau_bateau, Inventory missile){
+void save(Grid tableau_bateau, Inventory missile, char mode){
     FILE *fichier;
     int i, j;
     fichier = fopen("sauvegarde", "w");
+    fprintf(fichier, "%c\n", mode);
     fprintf(fichier, "%d\n%d\n%d\n%d\n", missile.nb_missile_artillery, missile.nb_missile_bomb, missile.nb_missile_simple, missile.nb_missile_tactical);
     for (i = 0; i < tableau_bateau.largeur; i++) {
             for( j = 0; j < tableau_bateau.hauteur; j++){
@@ -243,11 +246,12 @@ void save(Grid tableau_bateau, Inventory missile){
     fclose(fichier);
 }
 
-void load(Grid *tableau_bateau, Inventory *missile){
+void load(Grid *tableau_bateau, Inventory *missile, char *mode){
     FILE *fichier;
     char buffer[4];
     int i, j;
     fichier = fopen("sauvegarde", "r");
+    //*mode = fgetc(fichier);
     fgets(&buffer, 4, fichier);
     (*missile).nb_missile_artillery = atoi(buffer);
     fgets(&buffer, 4, fichier);
@@ -262,6 +266,6 @@ void load(Grid *tableau_bateau, Inventory *missile){
             (*tableau_bateau).grille[i][j] = fgetc(fichier);
         }
     }
-
+    fclose(fichier);
 }
 

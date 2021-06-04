@@ -78,8 +78,8 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
 void affichage_cases_blind(Grid cases_touchees);
 
-void save(Grid tableau_bateau, Inventory missile);
+void save(Grid tableau_bateau, Inventory missile, char mode);
 
-void load(Grid *tableau_bateau, Inventory *missile);
+void load(Grid *tableau_bateau, Inventory *missile, char *mode);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

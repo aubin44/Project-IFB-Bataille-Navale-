@@ -18,7 +18,7 @@ int main(){
     grille_bateaux.largeur = 10;
     int Coo_X, Coo_Y;
     int i;
-    int check, nb_bateau, check2;
+    int check, nb_bateau, check2, mode;
     char missile, rep;
     srand(time(0));
 
@@ -28,44 +28,64 @@ int main(){
     bateau[3].taille = 3;
     bateau[4].taille = 2;
 
-    load(&grille_bateaux, &stuff);
-    show_grid(grille_bateaux);
+    printf("Que choisissez vous ?\n - C : Charger une ancienne partie\n - N : Nouvelle partie\n - Q : Quitter\n");
+    fflush(stdin);
+    rep = getchar();
+    rep = toupper(rep);
+    if(rep == 'C'){
 
-    init_grille(&grille_bateaux);
-    init_grille(&grille_de_jeu);
-
-
-    for(i = 0; i < 5; i++){
-        do {
-            genere_bateau(&bateau, i, grille_bateaux);
-
-        } while (app_grille(bateau, i) == 1 || chevauchement(bateau, i, grille_bateaux) == 1);
-        /*printf("Le bateau de taille %d et d'orientation %c se trouve en (%d,%c)\n", bateau[i].taille,
-               bateau[i].orientation, bateau[i].position_x + 1, 'A'+bateau[i].position_y);*/                //Verif code
-
-        placement_bateaux(bateau, i, &grille_bateaux);
-
-    }
-    /*show_grid(grille_bateaux);*/                      //Vérif code
-
-    do {
-        check2 = 0;
-        printf("Veuillez saisir le mode de jeu souhaité :\n -C : Mode Classique\n -B : Mode Blind\n -A : Mode Active\n");
-        fflush(stdin);
-        rep = getchar();
-        rep = toupper(rep);
-
-        if (rep == 'C') {
+        load(&grille_bateaux, &stuff, &mode);
+        printf("%d", mode);
+        if(mode == 'C'){
+            printf("Ca fonctionne");
+            show_grid(grille_bateaux);
             classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
-        } else if (rep == 'B') {
-            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
-        } else if (rep == 'A') {
-            printf("Le mode active n'est pas terminé !\n");
-        } else {
-            printf("Le mode saisie n'existe pas !\n");
-            check2 = 1;
-        }
-    }while (check2 == 1);
 
+        }else if(mode == 'B'){
+            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+        }else{
+            printf("ERREUR");
+        }
+
+    }else if( rep == 'N') {
+
+        init_grille(&grille_bateaux);
+        init_grille(&grille_de_jeu);
+
+        for (i = 0; i < 5; i++) {
+            do {
+                genere_bateau(&bateau, i, grille_bateaux);
+
+            } while (app_grille(bateau, i) == 1 || chevauchement(bateau, i, grille_bateaux) == 1);
+            /*printf("Le bateau de taille %d et d'orientation %c se trouve en (%d,%c)\n", bateau[i].taille,
+                   bateau[i].orientation, bateau[i].position_x + 1, 'A'+bateau[i].position_y);*/                //Verif code
+
+            placement_bateaux(bateau, i, &grille_bateaux);
+
+        }
+        /*show_grid(grille_bateaux);*/                      //Vérif code
+
+        do {
+            check2 = 0;
+            printf("Veuillez saisir le mode de jeu souhaite :\n -C : Mode Classique\n -B : Mode Blind\n -A : Mode Active\n");
+            fflush(stdin);
+            rep = getchar();
+            rep = toupper(rep);
+
+            if (rep == 'C') {
+                classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+            } else if (rep == 'B') {
+                blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+            } else if (rep == 'A') {
+                printf("Le mode active n'est pas terminé !\n");
+            } else {
+                printf("Le mode saisie n'existe pas !\n");
+                check2 = 1;
+            }
+        } while (check2 == 1);
+    }else if(rep == 'Q'){
+        printf("A bientot pour une prochaine partie");
+        return 0;
+    }
     return 0;
 }
