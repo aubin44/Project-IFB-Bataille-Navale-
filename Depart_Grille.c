@@ -245,16 +245,16 @@ void save(Grid tableau_bateau, Inventory missile){
 
 void load(Grid *tableau_bateau, Inventory *missile){
     FILE *fichier;
-    char buffer[5];
+    char buffer[4];
     int i, j;
     fichier = fopen("sauvegarde", "r");
-    fgets(&buffer, 5, fichier);
+    fgets(&buffer, 4, fichier);
     (*missile).nb_missile_artillery = atoi(buffer);
-    fgets(&buffer, 5, fichier);
+    fgets(&buffer, 4, fichier);
     (*missile).nb_missile_bomb = atoi(buffer);
-    fgets(&buffer, 5, fichier);
+    fgets(&buffer, 4, fichier);
     (*missile).nb_missile_simple = atoi(buffer);
-    fgets(&buffer, 5, fichier);
+    fgets(&buffer, 4, fichier);
     (*missile).nb_missile_tactical = atoi(buffer);
 
     for(i = 0; i < (*tableau_bateau).largeur; i++){
