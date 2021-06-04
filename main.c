@@ -28,6 +28,9 @@ int main(){
     bateau[3].taille = 3;
     bateau[4].taille = 2;
 
+    load(&grille_bateaux, &stuff);
+    show_grid(grille_bateaux);
+
     init_grille(&grille_bateaux);
     init_grille(&grille_de_jeu);
 

@@ -174,6 +174,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
         /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
+        save(grille_bateaux, stuff);
 
     }while(nb_bateau > 0);
 
@@ -211,6 +212,7 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
 
+
     }while(nb_bateau > 0);
 
     printf("Youpi vous avez gagne !");
@@ -227,3 +229,40 @@ void affichage_cases_blind(Grid cases_touchees){
         }
     }
 }
+
+void save(Grid tableau_bateau, Inventory missile){
+    FILE *fichier;
+    int i, j;
+    fichier = fopen("sauvegarde", "w");
+    fprintf(fichier, "%d\n%d\n%d\n%d\n", missile.nb_missile_artillery, missile.nb_missile_bomb, missile.nb_missile_simple, missile.nb_missile_tactical);
+    for (i = 0; i < tableau_bateau.largeur; i++) {
+            for( j = 0; j < tableau_bateau.hauteur; j++){
+                fprintf(fichier,"%c", tableau_bateau.grille[i][j]);
+            }
+    }
+    fclose(fichier);
+}
+
+void load(Grid *tableau_bateau, Inventory *missile){
+    FILE *fichier;
+    char buffer[3];
+    int i, j;
+    fichier = fopen("sauvegarde", "r");
+    fgets(&buffer, 3, fichier);
+    (*missile).nb_missile_artillery = atoi(buffer);
+    fgets(&buffer, 3, fichier);
+    (*missile).nb_missile_bomb = atoi(buffer);
+    fgets(&buffer, 3, fichier);
+    (*missile).nb_missile_simple = atoi(buffer);
+    fgets(&buffer, 3, fichier);
+    (*missile).nb_missile_tactical = atoi(buffer);
+
+    for(i = 0; i < (*tableau_bateau).largeur; i++){
+        for(j = 0; j < (*tableau_bateau).hauteur; j++){
+            (*tableau_bateau).grille[i][j] = fgetc(fichier);
+        }
+    }
+
+}
+
+void
