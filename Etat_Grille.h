@@ -22,6 +22,6 @@ void missiles_restants(Inventory missile);
  * Après avoir vérifier que le nombre de missile restant est égal à 0, affiche que le joueur a perdu
  * @param nb_missile
  */
-void check_loose(Inventory nb_missile);
+int check_loose(Inventory nb_missile);
 
 #endif //NEW_PROJECT_IFB_ETAT_GRILLE_H

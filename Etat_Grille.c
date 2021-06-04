@@ -33,10 +33,10 @@ void missiles_restants(Inventory missile){
            missile.nb_missile_artillery, missile.nb_missile_tactical, missile.nb_missile_bomb, missile.nb_missile_simple);
 }
 
-void check_loose(Inventory nb_missile){
+int check_loose(Inventory nb_missile){
     if(nb_missile.nb_missile_artillery == 0 && nb_missile.nb_missile_bomb == 0
        && nb_missile.nb_missile_simple == 0 && nb_missile.nb_missile_tactical == 0){
         printf("Vous n'avez plus de missiles. Vous avez perdu !");
-        return exit(0);
+        return 0;
     }
 }
