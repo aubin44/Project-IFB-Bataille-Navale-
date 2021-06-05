@@ -19,7 +19,7 @@ int main(){
     int Coo_X, Coo_Y;
     int i;
     int check, nb_bateau, check2, mode;
-    char missile, rep;
+    char missile, rep, sauvegarde;
     srand(time(0));
 
     bateau[0].taille = 5;           //Initialisation de la taille des 5 bateaux
@@ -35,14 +35,16 @@ int main(){
     if(rep == 'C'){
 
         load(&grille_bateaux, &stuff, &mode);
-        printf("artillerie = %d\n", stuff.nb_missile_artillery);
+        printf("artillerie = %d\n", stuff.nb_missile_bomb);
         printf("%c\n", mode);
-        if(mode == 'C'){
+        if(mode == '1'){
             show_grid(grille_bateaux);
-            classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
-
-        }else if(mode == 'B'){
-            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+            sauvegarde = 'O';
+            classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+        }else if(mode == '2'){
+            show_grid(grille_bateaux);
+            sauvegarde = 'O';
+            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         }else{
             printf("ERREUR");
         }
@@ -73,9 +75,9 @@ int main(){
             rep = toupper(rep);
 
             if (rep == 'C') {
-                classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+                classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
             } else if (rep == 'B') {
-                blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
+                blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
             } else if (rep == 'A') {
                 printf("Le mode active n'est pas terminé !\n");
             } else {

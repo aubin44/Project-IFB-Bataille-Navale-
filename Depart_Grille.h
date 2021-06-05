@@ -84,7 +84,7 @@ void choix_difficult(Inventory *stuff);
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
  */
-void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
+int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
 /**
  * Lancement du mode de jeu Blind
@@ -94,7 +94,7 @@ void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
  */
-void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
+int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
 /**
  * Lecture de la grille dédiée au mode blind permettant d'informer les cases touchées où se trouvaient des bateaux
@@ -102,8 +102,10 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
  */
 void affichage_cases_blind(Grid cases_touchees);
 
-void save(Grid tableau_bateau, Inventory missile, char mode);
+void save(Grid tableau_bateau, Inventory missile, int mode);
 
-void load(Grid *tableau_bateau, Inventory *missile, char *mode);
+void load(Grid *tableau_bateau, Inventory *missile, int *mode);
+
+void init_save(Grid *tableau_bateau, Grid *grille);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H
