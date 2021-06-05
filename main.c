@@ -33,10 +33,7 @@ int main(){
     rep = getchar();
     rep = toupper(rep);
     if(rep == 'C'){
-
         load(&grille_bateaux, &stuff, &mode);
-        printf("artillerie = %d\n", stuff.nb_missile_bomb);
-        printf("%c\n", mode);
         if(mode == '1'){
             show_grid(grille_bateaux);
             sauvegarde = 'O';

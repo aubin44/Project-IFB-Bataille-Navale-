@@ -145,7 +145,7 @@ void choix_difficult(Inventory *stuff){
 }
 
 int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde){
-    int check, check2, nb_bateau;
+    int check, nb_bateau;
     char missile, rep;
     int mode = 1;                                                //mode de jeu utilisé pour la sauvegarde
 
@@ -189,7 +189,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
                 printf("Votre partie est sauvegardee, merci d'avoir joue !\n");
                 return 0;
             } else if (rep != 'J') {
-                printf("La réponse donne est incorrect\n");
+                printf("La reponse donne est incorrect\n");
                 check = 1;
             }
         }while(check == 1);
@@ -201,7 +201,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
 
 int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde){
     int check, nb_bateau;
-    char missile;
+    char missile, rep;
     int mode = 2;
 
     Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
@@ -210,10 +210,10 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
 
     if(sauvegarde != 'O') {
         choix_difficult(&stuff);
-        show_grid(grille_de_jeu);
+        /*show_grid(grille_de_jeu);*/           //Verif code
     }else{
         init_save(&grille_bateaux, &grille_de_jeu);
-        show_grid(grille_de_jeu);
+        /*show_grid(grille_de_jeu);*/           //Verif code
     }
 
     do {
@@ -236,7 +236,21 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         /*show_grid(grille_bateaux);*/                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
-        save(grille_bateaux, stuff, mode);
+        do {
+            check = 0;
+            printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            fflush(stdin);
+            rep = getchar();
+            rep = toupper(rep);
+            if (rep == 'S') {
+                save(grille_bateaux, stuff, mode);
+                printf("Votre partie est sauvegardee, merci d'avoir joue !\n");
+                return 0;
+            } else if (rep != 'J') {
+                printf("La réponse donne est incorrect\n");
+                check = 1;
+            }
+        }while(check == 1);
 
     }while(nb_bateau > 0);
 
@@ -258,8 +272,8 @@ void affichage_cases_blind(Grid cases_touchees){
 void save(Grid tableau_bateau, Inventory missile, int mode){
     FILE *fichier;
     int i, j;
-    fichier = fopen("sauvegarde", "w");
-    fprintf(fichier, "%d\n", mode);
+    fichier = fopen("sauvegarde", "w");             //Sauvegarde du nombre de missile, du mode et de la grille de bateaux
+    fprintf(fichier, "%d\n", mode);                         //Dans le fichier texte 'sauvegarde'
     fprintf(fichier, "%d\n%d\n%d\n%d\n", missile.nb_missile_artillery, missile.nb_missile_bomb, missile.nb_missile_simple, missile.nb_missile_tactical);
     for (i = 0; i < tableau_bateau.largeur; i++) {
             for( j = 0; j < tableau_bateau.hauteur; j++){
@@ -275,9 +289,9 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode){
     char tampon;
     int i, j;
     fichier = fopen("sauvegarde", "r");
-    *mode = fgetc(fichier);
-    tampon = fgetc(fichier);
-    fgets(&buffer, 4, fichier);
+    *mode = fgetc(fichier);                             //Enregistrement du mode de jeu de la partie en cours
+    tampon = fgetc(fichier);                            //Variable tampon permettant de ne pas créer un décallage lors de l'insertion du tableau de bateau
+    fgets(&buffer, 4, fichier);               //Initialisation du nombre de missile restant pour chaque type
     (*missile).nb_missile_artillery = atoi(buffer);
     fgets(&buffer, 4, fichier);
     (*missile).nb_missile_bomb = atoi(buffer);
@@ -286,7 +300,7 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode){
     fgets(&buffer, 4, fichier);
     (*missile).nb_missile_tactical = atoi(buffer);
 
-    for(i = 0; i < (*tableau_bateau).largeur; i++){
+    for(i = 0; i < (*tableau_bateau).largeur; i++){     //Initialisation de la grille de bateau de l'ancienne partie
         for(j = 0; j < (*tableau_bateau).hauteur; j++){
             (*tableau_bateau).grille[i][j] = fgetc(fichier);
         }
@@ -297,7 +311,7 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode){
 void init_save(Grid *tableau_bateau, Grid *grille){
     int a, b;
 
-    for(a = 0; a < (*tableau_bateau).largeur; a++){
+    for(a = 0; a < (*tableau_bateau).largeur; a++){     //Initialisation de la grille de jeu grâce à la grille de bateau de l'ancienne partie
         for(b = 0; b < (*tableau_bateau).hauteur; b++){
             if((*tableau_bateau).grille[a][b] == 'F'){
                 (*grille).grille[a][b] = 'O';

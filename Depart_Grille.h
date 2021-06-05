@@ -77,12 +77,14 @@ int chevauchement(Boat *bateau,int i, Grid grille_bateau);
 void choix_difficult(Inventory *stuff);
 
 /**
- * Lancement du mode de jeu classique
+ * Lancement du mode de jeu Classique
  * @param stuff le nombre de missile
  * @param grille_bateaux le tableau où sont placés les bateaux
- * @param grille_de_jeu la grille affichée à l'utilisateur
+ * @param grille_de_jeu la grille utilisée pour repérer les cases touchées
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
+ * @param sauvegarde permet de reprendre une ancienne partie
+ * @return 0 si le joueur veut quitter la partie
  */
 int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
@@ -93,6 +95,8 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
  * @param grille_de_jeu la grille utilisée pour repérer les cases touchées
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
+ * @param sauvegarde permet de reprendre une ancienne partie
+ * @return 0 si le joueur veut quitter la partie
  */
 int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
@@ -102,10 +106,27 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
  */
 void affichage_cases_blind(Grid cases_touchees);
 
+/**
+ * Sauvegarde la position des bateaux ainsi que le nombre de missile
+ * @param tableau_bateau la grille de bateaux
+ * @param missile le nombre de missile
+ * @param mode le mode de jeu
+ */
 void save(Grid tableau_bateau, Inventory missile, int mode);
 
+/**
+ * Redémarre une ancienne partie sauvegardée
+ * @param tableau_bateau la grille de bateaux
+ * @param missile le nombre de missile
+ * @param mode le mode de jeu
+ */
 void load(Grid *tableau_bateau, Inventory *missile, int *mode);
 
+/**
+ * Initialise la grille de jeu lorsque l'on relance une partie sauvegardée
+ * @param tableau_bateau la grille de bateau
+ * @param grille la grille de jeu
+ */
 void init_save(Grid *tableau_bateau, Grid *grille);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H
