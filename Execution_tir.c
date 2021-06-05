@@ -101,9 +101,9 @@ void choix_missile(char *missile){
            " -B : Pour bombe\n -S : Pour missile simple\n");
     fflush(stdin);
     rep = getchar();
-    rep = toupper(rep);
+    rep = toupper(rep);                                                                 //Mise de la réponse en majuscule pour éviter les erreurs
 
-    while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){
+    while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){                       //Controle d'acquisition avec message d'erreur
         printf("ERREUR ! Veuillez saisir un missile existant !\n");
         printf("Veuillez saisir un des missiles suivants :\n");
         printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
@@ -123,7 +123,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
 
     printf("Dans quelle colonne souhaitez vous tirer :");
     scanf("%d", &position_X);
-    while (position_X < 1 || position_X > 10){
+    while (position_X < 1 || position_X > 10){                                              //Controle d'acquistion avec message d'erreur
         printf("Veuillez saisir une valeure comprise dans l'intervalle [1;10]\n");
         printf("Dans quelle colonne souhaitez vous tirer :\n");
         fflush(stdin);
@@ -133,7 +133,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     fflush(stdin);
     buffer = getchar();
     buffer = toupper(buffer);
-    while (buffer - 'A' < 0 || buffer - 'A' > 9){
+    while (buffer - 'A' < 0 || buffer - 'A' > 9){                                           //Controle d'acquistion avec message d'erreur
         printf("Veuillez saisir une lettre entre A et J ");
         printf("Dans quelle ligne souhaitez vous tirer :");
         fflush(stdin);
@@ -141,26 +141,26 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
         buffer = toupper(buffer);
     }
 
-    *Coo_X = position_X - 1;
+    *Coo_X = position_X - 1;                                                                //Retourner les coordonnées du point d'impact demandé
     *Coo_Y = buffer - 'A';
 }
 
 void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int missile, Inventory *stuff, int *check, Grid *cases_touchees){
     (*check) = 0;
-    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {
-        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
-        (*stuff).nb_missile_artillery -= 1;
-    } else if (missile == 'T' && (*stuff).nb_missile_tactical > 0) {
-        fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
-        (*stuff).nb_missile_tactical -= 1;
-    } else if (missile == 'B' && (*stuff).nb_missile_bomb > 0) {
-        fire_bomb(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
-        (*stuff).nb_missile_bomb -= 1;
-    } else if (missile == 'S' && (*stuff).nb_missile_simple > 0) {
-        fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);
-        (*stuff).nb_missile_simple -= 1;
+    if (missile == 'A' && (*stuff).nb_missile_artillery > 0) {                          //Si reponse = 'A'
+        fire_artillery(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);    //Déclenchement du missile artillerie
+        (*stuff).nb_missile_artillery -= 1;                                             //Le nombre de missile d'artillerie diminue
+    } else if (missile == 'T' && (*stuff).nb_missile_tactical > 0) {                    //Si reponse = 'T'
+        fire_tactical(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);     //Déclenchement du missile tactique
+        (*stuff).nb_missile_tactical -= 1;                                              //Le nombre de missile tactique diminue
+    } else if (missile == 'B' && (*stuff).nb_missile_bomb > 0) {                        //Si reponse = 'B'
+        fire_bomb(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);         //Déclenchement du missile bombe
+        (*stuff).nb_missile_bomb -= 1;                                                  //Le nombre de missile bombe diminue
+    } else if (missile == 'S' && (*stuff).nb_missile_simple > 0) {                      //Si reponse = 'S'
+        fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);       //Déclenchement du missile simple
+        (*stuff).nb_missile_simple -= 1;                                                //Le nombre de missile simple diminue
     } else {
         printf("ERREUR, vous n'avez plus de ce missile");
-        (*check) = 1;
+        (*check) = 1;                                                                   //Variable permettant de recommencer la fonction en cas d'erreur
     }
 }
