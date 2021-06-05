@@ -58,8 +58,8 @@ void placement_bateaux(Boat bateau[], int i, Grid *grille_bateaux){
     }else{                                                                                  //Si l'orientation du bateau est 'V' parcourir les ordonnées
         for(a = bateau[i].position_y; a < bateau[i].position_y + bateau[i].taille; a++){    //Du point généré x jusqu'au point x + la taille du bateau
             (*grille_bateaux).grille[bateau[i].position_x][a] = 'a'+i;
-        }                                                                                   //Placer 'O' là où se trouve un bateau
-    }
+        }                                                                                   //Placer 'a' + i là où se trouve un bateau
+    }                                                                                       //Afin de pouvoir diférencier les bateaux entre eux
 }
 
 void genere_bateau(Boat *bateau, int i, Grid grille_bateau){
@@ -75,16 +75,16 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau){
 int chevauchement(Boat *bateau,int i, Grid grille_bateau){
     int a, test = 0;
 
-    if(bateau[i].orientation == 'H'){
-        for(a = bateau[i].position_x; a - bateau[i].position_x < bateau[i].taille; a++){
-            if(grille_bateau.grille[a][bateau[i].position_y] != '_'){
+    if(bateau[i].orientation == 'H'){                                                       //Si le bateau est horizontale
+        for(a = bateau[i].position_x; a - bateau[i].position_x < bateau[i].taille; a++){    //Vérifier pour les coordonnées allant de (x,y) à (x + taille,y)
+            if(grille_bateau.grille[a][bateau[i].position_y] != '_'){                       //Si une des cases n'est pas vide
                 test = 1;
             }
         }
     }else{
-        for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){
-            if(grille_bateau.grille[bateau[i].position_x][a] != '_'){
-                test = 1;
+        for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){    //Si le bateau est verticale
+            if(grille_bateau.grille[bateau[i].position_x][a] != '_'){                       //Vérifier pour les coordonnées allant de (x,y) à (x,y + taille)
+                test = 1;                                                                   //Si une des cases n'est pas vide
             }
         }
     }
@@ -147,9 +147,9 @@ void choix_difficult(Inventory *stuff){
 void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y){
     int check, nb_bateau;
     char missile;
-    char mode = 'C';
+    char mode = 'C';                                                //mode de jeu utilisé pour la sauvegarde
 
-    Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
+    Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
 
@@ -223,9 +223,9 @@ void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 void affichage_cases_blind(Grid cases_touchees){
     int a, b;
 
-    for(a = 0; a < cases_touchees.largeur; a++){
-        for(b = 0; b < cases_touchees.hauteur; b++){
-            if(cases_touchees.grille[a][b] == 'X'){
+    for(a = 0; a < cases_touchees.largeur; a++){                    //Parcourir la grille dédiée au mode blind (initialisée entre chaque tour)
+        for(b = 0; b < cases_touchees.hauteur; b++){                //Lorsqu'un point d'impact y apparait
+            if(cases_touchees.grille[a][b] == 'X'){                 //Notifier le joueur en lui indiquant l'adresse de ce point d'impact
                 printf("-Vous avez touche un bateau en (%d,%c)\n", a + 1, b + 'A');
             }
         }
@@ -249,8 +249,12 @@ void save(Grid tableau_bateau, Inventory missile, char mode){
 void load(Grid *tableau_bateau, Inventory *missile, char *mode){
     FILE *fichier;
     char buffer[4];
+    char tampon;
     int i, j;
     fichier = fopen("sauvegarde", "r");
+    fgetc(&tampon);
+    *mode = tampon;
+    printf("%c", tampon);
     //*mode = fgetc(fichier);
     fgets(&buffer, 4, fichier);
     (*missile).nb_missile_artillery = atoi(buffer);

@@ -70,12 +70,36 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau);
  */
 int chevauchement(Boat *bateau,int i, Grid grille_bateau);
 
+/**
+ * Attribue le nombre de missile en fonction du niveau de difficulté sélectionné
+ * @param stuff la variable contenant le nombre de missile
+ */
 void choix_difficult(Inventory *stuff);
 
+/**
+ * Lancement du mode de jeu classique
+ * @param stuff le nombre de missile
+ * @param grille_bateaux le tableau où sont placés les bateaux
+ * @param grille_de_jeu la grille affichée à l'utilisateur
+ * @param Coo_X la coordonnée du point d'impact en abscisse
+ * @param Coo_Y la coordonnée du point d'impact en ordonnée
+ */
 void classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
 
+/**
+ * Lancement du mode de jeu Blind
+ * @param stuff le nombre de missile
+ * @param grille_bateaux le tableau où sont placés les bateaux
+ * @param grille_de_jeu la grille utilisée pour repérer les cases touchées
+ * @param Coo_X la coordonnée du point d'impact en abscisse
+ * @param Coo_Y la coordonnée du point d'impact en ordonnée
+ */
 void blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y);
 
+/**
+ * Lecture de la grille dédiée au mode blind permettant d'informer les cases touchées où se trouvaient des bateaux
+ * @param cases_touchees la grille en question
+ */
 void affichage_cases_blind(Grid cases_touchees);
 
 void save(Grid tableau_bateau, Inventory missile, char mode);

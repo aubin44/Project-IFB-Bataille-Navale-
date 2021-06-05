@@ -7,9 +7,9 @@
 #include "Depart_Grille.h"
 
 
-void fire_artillery(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees);
+void fire_artillery(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees);
 
-void fire_tactical(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees);
+void fire_tactical(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees);
 
 void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees);
 

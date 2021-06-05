@@ -35,9 +35,9 @@ int main(){
     if(rep == 'C'){
 
         load(&grille_bateaux, &stuff, &mode);
-        printf("%d", mode);
+        printf("artillerie = %d\n", stuff.nb_missile_artillery);
+        printf("%c\n", mode);
         if(mode == 'C'){
-            printf("Ca fonctionne");
             show_grid(grille_bateaux);
             classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y);
 

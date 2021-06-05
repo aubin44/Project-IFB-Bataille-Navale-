@@ -6,50 +6,50 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void fire_artillery(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees){
+void fire_artillery(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees){
     int a, b;
     int i = 0;
 
-    for(a = 0; a < (*bateau).largeur; a++) {                       //On parcourt la colonne de coordonnée Y du point d'impact dans le tableau de bateaux
-        if ((*bateau).grille[a][Y] != '_' && (*bateau).grille[a][Y] != 'F') {                       //Lorsqu'une case sur cette colonne est un bateau
+    for(a = 0; a < (*tableau_bateau).largeur; a++) {                       //On parcourt la colonne de coordonnée Y du point d'impact dans le tableau de bateaux
+        if ((*tableau_bateau).grille[a][Y] != '_' && (*tableau_bateau).grille[a][Y] != 'F') {                       //Lorsqu'une case sur cette colonne est un bateau
             (*grille).grille[a][Y] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
             (*cases_touchees).grille[a][Y] = 'X';
-            (*bateau).grille[a][Y] = toupper((*bateau).grille[a][Y]);   //Marquage des case contenant des bateaux touchés
+            (*tableau_bateau).grille[a][Y] = toupper((*tableau_bateau).grille[a][Y]);   //Marquage des case contenant des bateaux touchés
         } else {                                                         //Lorsq'une case sur cette colonne est de l'eau
             (*grille).grille[a][Y] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
-            (*bateau).grille[a][Y] = 'F';
+            (*tableau_bateau).grille[a][Y] = 'F';
         }
     }
-    for(b = 0; b < (*bateau).hauteur; b++){                        //On parcourt la ligne de coordonnée X du point d'impact dans le tableau de bateaux
-        if((*bateau).grille[X][b] != '_' && (*bateau).grille[X][b] != 'F'){                         //Lorsqu'une case sur cette ligne est un bateau
+    for(b = 0; b < (*tableau_bateau).hauteur; b++){                        //On parcourt la ligne de coordonnée X du point d'impact dans le tableau de bateaux
+        if((*tableau_bateau).grille[X][b] != '_' && (*tableau_bateau).grille[X][b] != 'F'){                         //Lorsqu'une case sur cette ligne est un bateau
             (*grille).grille[X][b] = 'X';                               //La case correspondante de la grille de jeu affiche 'X'
             (*cases_touchees).grille[X][b] = 'X';
-            (*bateau).grille[X][b] = toupper((*bateau).grille[X][b]);   //Marquage des case contenant des bateaux touchés
+            (*tableau_bateau).grille[X][b] = toupper((*tableau_bateau).grille[X][b]);   //Marquage des case contenant des bateaux touchés
         }else{                                                          //Lorsq'une case sur cette ligne est de l'eau
             (*grille).grille[X][b] = 'O';                               //La case correspondante de la grille de jeu affiche 'O'
-            (*bateau).grille[X][b] = 'F';
+            (*tableau_bateau).grille[X][b] = 'F';
         }
     }
 }
 
-void fire_tactical(Grid *grille, Grid *bateau, int X, int Y, Grid *cases_touchees){
+void fire_tactical(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees){
     int a, b;
-    char position = (*bateau).grille[X][Y];
-    for(a = 0; a < (*bateau).largeur; a++){
-        for(b = 0; b < (*bateau).hauteur; b++){                                //On parcourt tous le tableau de bateaux
-            if((*bateau).grille[X][Y] != '_' && (*bateau).grille[X][Y] != 'F'){                                 //Si le point d'impact est un bateau
-                if((*bateau).grille[a][b] == position){             //Pour toutes les cases de ce bateau
+    char position = (*tableau_bateau).grille[X][Y];
+    for(a = 0; a < (*tableau_bateau).largeur; a++){
+        for(b = 0; b < (*tableau_bateau).hauteur; b++){                                //On parcourt tous le tableau de bateaux
+            if((*tableau_bateau).grille[X][Y] != '_' && (*tableau_bateau).grille[X][Y] != 'F'){                                 //Si le point d'impact est un bateau
+                if((*tableau_bateau).grille[a][b] == position){             //Pour toutes les cases de ce bateau
                     (*grille).grille[a][b] = 'X';                                   //Les cases correspondantes de la grille de jeu affiche 'X'
                     (*cases_touchees).grille[a][b] = 'X';
                     (*cases_touchees).grille[a][b] = 'X';
-                    (*bateau).grille[a][b] = toupper((*bateau).grille[a][b]);       //Marquage des case contenant des bateaux touchés
+                    (*tableau_bateau).grille[a][b] = toupper((*tableau_bateau).grille[a][b]);       //Marquage des case contenant des bateaux touchés
                 }
             }
         }
     }
-    if((*bateau).grille[X][Y] == '_'){
+    if((*tableau_bateau).grille[X][Y] == '_'){
         (*grille).grille[X][Y] = 'O';                                       //La case correspondante de la grille de jeu affiche 'O'
-        (*bateau).grille[X][Y] = 'F';
+        (*tableau_bateau).grille[X][Y] = 'F';
     }
 }
 
