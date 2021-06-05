@@ -35,11 +35,11 @@ int main(){
     if(rep == 'C'){
         load(&grille_bateaux, &stuff, &mode);
         if(mode == '1'){
-            show_grid(grille_bateaux);
+            /*show_grid(grille_bateaux);*/          //Verif code
             sauvegarde = 'O';
             classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         }else if(mode == '2'){
-            show_grid(grille_bateaux);
+            /*show_grid(grille_bateaux);*/
             sauvegarde = 'O';
             blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         }else{

@@ -221,7 +221,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         check_loose(stuff);
         choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
         while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
-            printf("Vous avez deja tirez sur cette case !");
+            printf("Vous avez deja tirez sur cette case !\n");
             choix_coo_de_tir(&Coo_X, &Coo_Y);
         }
         do {
