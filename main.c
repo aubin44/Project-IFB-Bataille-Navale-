@@ -77,6 +77,7 @@ int main(){
                 blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
             } else if (rep == 'A') {
                 printf("Le mode active n'est pas terminé !\n");
+                active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, &bateau);
             } else {
                 printf("Le mode saisie n'existe pas !\n");
                 check2 = 1;

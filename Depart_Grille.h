@@ -129,4 +129,8 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode);
  */
 void init_save(Grid *tableau_bateau, Grid *grille);
 
+int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau);
+
+int bateau_deplace (Boat *bateau, Grid cases_touchees);
+
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

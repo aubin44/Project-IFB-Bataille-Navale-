@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 
 
 void init_grille(Grid *grille){
@@ -324,3 +325,103 @@ void init_save(Grid *tableau_bateau, Grid *grille){
     }
 }
 
+int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau){
+    int check, nb_bateau;
+    char missile, rep;
+    int mode = 3;                                                //mode de jeu utilisé pour la sauvegarde
+
+    Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
+    cases_touchees.hauteur = 10;
+    cases_touchees.largeur = 10;
+    if(sauvegarde != 'O'){
+        choix_difficult(&stuff);
+        show_grid(grille_de_jeu);
+    }else{
+        init_save(&grille_bateaux, &grille_de_jeu);
+        show_grid(grille_de_jeu);
+    }
+    init_grille(&cases_touchees);
+    do {
+
+        check_loose(stuff);
+        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
+        while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'E'){          //Demande au joueur de choisir une autre case
+            printf("Vous avez deja tirez sur cette case !");
+            choix_coo_de_tir(&Coo_X, &Coo_Y);
+        }
+        do {
+            check = 0;
+            choix_missile(&missile);
+            tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
+        } while (check == 1);
+
+        show_grid(grille_de_jeu);
+
+        /*show_grid(grille_bateaux);*/                  //Verif code
+        missiles_restants(stuff);
+        bateaux_restants(grille_bateaux, &nb_bateau);
+        printf("%d", bateau_deplace(&bateau, cases_touchees));
+        do{
+            check = 0;
+            printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            fflush(stdin);
+            rep = getchar();
+            rep = toupper(rep);
+            if (rep == 'S') {
+                save(grille_bateaux, stuff, mode);
+                printf("Votre partie est sauvegardee, merci d'avoir joue !\n");
+                return 0;
+            } else if (rep != 'J') {
+                printf("La reponse donne est incorrect\n");
+                check = 1;
+            }
+        }while(check == 1);
+
+    }while(nb_bateau > 0);
+
+    printf("Youpi vous avez gagne !");
+}
+
+int bateau_deplace(Boat *bateau, Grid cases_touchees){
+    int i, indice_bateau, a;
+    int somme;
+    int bateau_touche[5];
+
+    srand(time(0));
+
+    for(indice_bateau = 0; indice_bateau < 5; indice_bateau++) {
+        for (a = 0; a < 5; a++) {
+            if (bateau[indice_bateau].orientation == 'H') {
+                for (i = bateau[indice_bateau].position_x;
+                     i <= bateau[indice_bateau].taille + bateau[indice_bateau].position_x; i++) {
+                    if (cases_touchees.grille[i][bateau[indice_bateau].position_y] == 'X') {
+                        bateau_touche[a] = 1;
+                    } else {
+                        bateau_touche[a] = 0;
+                    }
+                }
+            } else {
+                for (i = bateau[indice_bateau].position_y;
+                     i <= bateau[indice_bateau].taille + bateau[indice_bateau].position_y; i++) {
+                    if (cases_touchees.grille[bateau[indice_bateau].position_x][i] == 'X') {
+                        bateau_touche[a] = 1;
+                    } else {
+                        bateau_touche[a] = 0;
+                    }
+                }
+            }
+        }
+    }
+    for(a = 0; a < 5; a++){
+        somme = bateau_touche[a];
+    }
+    if(somme == 5){
+        printf("Aucun bateau n'a été déplacé car ils ont tous été touchés !\n");
+        return -1;
+    }else{
+        do{
+            indice_bateau = rand()% 5;
+        } while (bateau_touche[indice_bateau] == 1);
+        return indice_bateau;
+    }
+}
