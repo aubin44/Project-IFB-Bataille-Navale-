@@ -37,6 +37,6 @@ int check_loose(Inventory nb_missile){
     if(nb_missile.nb_missile_artillery == 0 && nb_missile.nb_missile_bomb == 0          //Si il ne reste plus aucun missile le joueur a perdu
        && nb_missile.nb_missile_simple == 0 && nb_missile.nb_missile_tactical == 0){
         printf("Vous n'avez plus de missiles. Vous avez perdu !");
-        return 0;
+        exit(0);
     }
 }
