@@ -88,7 +88,7 @@ void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *ba
 int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde){
     int check, nb_bateau;
     char missile, rep;
-    int mode = 1;                                                //mode de jeu utilisé pour la sauvegarde
+    int mode = 1;                                                   //mode de jeu utilisé pour la sauvegarde
 
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
@@ -145,7 +145,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
     char missile, rep;
     int mode = 2;
 
-    Grid cases_touchees;                        //Grille utilisée uniquement pour le mode Blind
+    Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
 
@@ -201,7 +201,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau){
     int check, nb_bateau;
     char missile, rep, indice_bateau;
-    int mode = 3;                                                //mode de jeu utilisé pour la sauvegarde
+    int mode = 3;                                                   //mode de jeu utilisé pour la sauvegarde
 
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;

@@ -63,15 +63,16 @@ void init_save(Grid *tableau_bateau, Grid *grille){
 }
 
 void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu){
-    load(&grille_bateaux, &stuff, &mode);
-    if(mode == '1'){
+                                                                                    //Recharger le tableau de bateau, l'inventaire de missile
+    load(&grille_bateaux, &stuff, &mode);                                           //et le mode de jeu de la dernière partie
+    if(mode == '1'){                                                                //Si c'est le premier mode
         /*show_grid(grille_bateaux);*/          //Verif code
         sauvegarde = 'O';
-        classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
-    }else if(mode == '2'){
+        classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);  //Lancer le mode classique
+    }else if(mode == '2'){                                                          //Si c'est le second mode
         /*show_grid(grille_bateaux);*/
         sauvegarde = 'O';
-        blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+        blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);      //Lancer le mode Blind
     }else{
         printf("ERREUR");
     }
