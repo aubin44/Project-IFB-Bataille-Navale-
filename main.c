@@ -2,10 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
-#include <string.h>
-#include "Depart_Grille.h"
-#include "Execution_tir.h"
-#include "Etat_Grille.h"
+#include "Initialisation_grille.h"
+#include "Type_de_partie.h"
+#include "Sauvegarde.h"
 
 
 int main(){
@@ -18,8 +17,8 @@ int main(){
     grille_bateaux.largeur = 10;
     int Coo_X, Coo_Y;
     int i;
-    int check, nb_bateau, check2, mode;
-    char missile, rep, sauvegarde;
+    int check2, mode;
+    char rep, sauvegarde;
     srand(time(0));
 
     bateau[0].taille = 5;           //Initialisation de la taille des 5 bateaux

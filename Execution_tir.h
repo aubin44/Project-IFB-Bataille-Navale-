@@ -4,7 +4,7 @@
 
 #ifndef NEW_PROJECT_IFB_EXECUTION_TIR_H
 #define NEW_PROJECT_IFB_EXECUTION_TIR_H
-#include "Depart_Grille.h"
+#include "Initialisation_grille.h"
 
 /**
  * Déclenchement du missile d'artillerie et affichage sur les grilles

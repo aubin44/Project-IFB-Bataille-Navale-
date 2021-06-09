@@ -66,10 +66,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27"
+CMAKE_SOURCE_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -98,9 +98,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -141,59 +141,32 @@ New_project_ifb/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/build
 .PHONY : New_project_ifb/fast
 
-Depart_Grille.obj: Depart_Grille.c.obj
+Etat_partie.obj: Etat_partie.c.obj
 
-.PHONY : Depart_Grille.obj
-
-# target to build an object file
-Depart_Grille.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj
-.PHONY : Depart_Grille.c.obj
-
-Depart_Grille.i: Depart_Grille.c.i
-
-.PHONY : Depart_Grille.i
-
-# target to preprocess a source file
-Depart_Grille.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Depart_Grille.c.i
-.PHONY : Depart_Grille.c.i
-
-Depart_Grille.s: Depart_Grille.c.s
-
-.PHONY : Depart_Grille.s
-
-# target to generate assembly for a file
-Depart_Grille.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Depart_Grille.c.s
-.PHONY : Depart_Grille.c.s
-
-Etat_Grille.obj: Etat_Grille.c.obj
-
-.PHONY : Etat_Grille.obj
+.PHONY : Etat_partie.obj
 
 # target to build an object file
-Etat_Grille.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj
-.PHONY : Etat_Grille.c.obj
+Etat_partie.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj
+.PHONY : Etat_partie.c.obj
 
-Etat_Grille.i: Etat_Grille.c.i
+Etat_partie.i: Etat_partie.c.i
 
-.PHONY : Etat_Grille.i
+.PHONY : Etat_partie.i
 
 # target to preprocess a source file
-Etat_Grille.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.i
-.PHONY : Etat_Grille.c.i
+Etat_partie.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_partie.c.i
+.PHONY : Etat_partie.c.i
 
-Etat_Grille.s: Etat_Grille.c.s
+Etat_partie.s: Etat_partie.c.s
 
-.PHONY : Etat_Grille.s
+.PHONY : Etat_partie.s
 
 # target to generate assembly for a file
-Etat_Grille.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_Grille.c.s
-.PHONY : Etat_Grille.c.s
+Etat_partie.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Etat_partie.c.s
+.PHONY : Etat_partie.c.s
 
 Execution_tir.obj: Execution_tir.c.obj
 
@@ -221,6 +194,87 @@ Execution_tir.s: Execution_tir.c.s
 Execution_tir.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Execution_tir.c.s
 .PHONY : Execution_tir.c.s
+
+Initialisation_grille.obj: Initialisation_grille.c.obj
+
+.PHONY : Initialisation_grille.obj
+
+# target to build an object file
+Initialisation_grille.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj
+.PHONY : Initialisation_grille.c.obj
+
+Initialisation_grille.i: Initialisation_grille.c.i
+
+.PHONY : Initialisation_grille.i
+
+# target to preprocess a source file
+Initialisation_grille.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.i
+.PHONY : Initialisation_grille.c.i
+
+Initialisation_grille.s: Initialisation_grille.c.s
+
+.PHONY : Initialisation_grille.s
+
+# target to generate assembly for a file
+Initialisation_grille.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.s
+.PHONY : Initialisation_grille.c.s
+
+Sauvegarde.obj: Sauvegarde.c.obj
+
+.PHONY : Sauvegarde.obj
+
+# target to build an object file
+Sauvegarde.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj
+.PHONY : Sauvegarde.c.obj
+
+Sauvegarde.i: Sauvegarde.c.i
+
+.PHONY : Sauvegarde.i
+
+# target to preprocess a source file
+Sauvegarde.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Sauvegarde.c.i
+.PHONY : Sauvegarde.c.i
+
+Sauvegarde.s: Sauvegarde.c.s
+
+.PHONY : Sauvegarde.s
+
+# target to generate assembly for a file
+Sauvegarde.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Sauvegarde.c.s
+.PHONY : Sauvegarde.c.s
+
+Type_de_partie.obj: Type_de_partie.c.obj
+
+.PHONY : Type_de_partie.obj
+
+# target to build an object file
+Type_de_partie.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj
+.PHONY : Type_de_partie.c.obj
+
+Type_de_partie.i: Type_de_partie.c.i
+
+.PHONY : Type_de_partie.i
+
+# target to preprocess a source file
+Type_de_partie.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Type_de_partie.c.i
+.PHONY : Type_de_partie.c.i
+
+Type_de_partie.s: Type_de_partie.c.s
+
+.PHONY : Type_de_partie.s
+
+# target to generate assembly for a file
+Type_de_partie.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\New_project_ifb.dir\build.make CMakeFiles/New_project_ifb.dir/Type_de_partie.c.s
+.PHONY : Type_de_partie.c.s
 
 main.obj: main.c.obj
 
@@ -258,15 +312,21 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... New_project_ifb
-	@echo ... Depart_Grille.obj
-	@echo ... Depart_Grille.i
-	@echo ... Depart_Grille.s
-	@echo ... Etat_Grille.obj
-	@echo ... Etat_Grille.i
-	@echo ... Etat_Grille.s
+	@echo ... Etat_partie.obj
+	@echo ... Etat_partie.i
+	@echo ... Etat_partie.s
 	@echo ... Execution_tir.obj
 	@echo ... Execution_tir.i
 	@echo ... Execution_tir.s
+	@echo ... Initialisation_grille.obj
+	@echo ... Initialisation_grille.i
+	@echo ... Initialisation_grille.s
+	@echo ... Sauvegarde.obj
+	@echo ... Sauvegarde.i
+	@echo ... Sauvegarde.s
+	@echo ... Type_de_partie.obj
+	@echo ... Type_de_partie.i
+	@echo ... Type_de_partie.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

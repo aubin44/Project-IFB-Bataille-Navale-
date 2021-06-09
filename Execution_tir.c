@@ -4,7 +4,7 @@
 #include "Execution_tir.h"
 #include <ctype.h>
 #include <stdio.h>
-#include <stdlib.h>
+
 
 void fire_artillery(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_touchees){
     int a, b;

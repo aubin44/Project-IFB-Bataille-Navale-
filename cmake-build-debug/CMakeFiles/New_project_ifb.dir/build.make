@@ -61,10 +61,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27"
+CMAKE_SOURCE_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/New_project_ifb.dir/depend.make
@@ -77,75 +77,105 @@ include CMakeFiles/New_project_ifb.dir/flags.make
 
 CMakeFiles/New_project_ifb.dir/main.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
 CMakeFiles/New_project_ifb.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/New_project_ifb.dir/main.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\main.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\main.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/New_project_ifb.dir/main.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\main.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\main.c"
 
 CMakeFiles/New_project_ifb.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/main.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\main.c" > CMakeFiles\New_project_ifb.dir\main.c.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\main.c" > CMakeFiles\New_project_ifb.dir\main.c.i
 
 CMakeFiles/New_project_ifb.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/main.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\main.c" -o CMakeFiles\New_project_ifb.dir\main.c.s
-
-CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
-CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj: ../Depart_Grille.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Depart_Grille.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Depart_Grille.c"
-
-CMakeFiles/New_project_ifb.dir/Depart_Grille.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Depart_Grille.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Depart_Grille.c" > CMakeFiles\New_project_ifb.dir\Depart_Grille.c.i
-
-CMakeFiles/New_project_ifb.dir/Depart_Grille.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Depart_Grille.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Depart_Grille.c" -o CMakeFiles\New_project_ifb.dir\Depart_Grille.c.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\main.c" -o CMakeFiles\New_project_ifb.dir\main.c.s
 
 CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
 CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj: ../Execution_tir.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Execution_tir.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Execution_tir.c"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Execution_tir.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Execution_tir.c"
 
 CMakeFiles/New_project_ifb.dir/Execution_tir.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Execution_tir.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Execution_tir.c" > CMakeFiles\New_project_ifb.dir\Execution_tir.c.i
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Execution_tir.c" > CMakeFiles\New_project_ifb.dir\Execution_tir.c.i
 
 CMakeFiles/New_project_ifb.dir/Execution_tir.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Execution_tir.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Execution_tir.c" -o CMakeFiles\New_project_ifb.dir\Execution_tir.c.s
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Execution_tir.c" -o CMakeFiles\New_project_ifb.dir\Execution_tir.c.s
 
-CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
-CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj: ../Etat_Grille.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Etat_Grille.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Etat_Grille.c"
+CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
+CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj: ../Initialisation_grille.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Initialisation_grille.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Initialisation_grille.c"
 
-CMakeFiles/New_project_ifb.dir/Etat_Grille.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Etat_Grille.c.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Etat_Grille.c" > CMakeFiles\New_project_ifb.dir\Etat_Grille.c.i
+CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Initialisation_grille.c" > CMakeFiles\New_project_ifb.dir\Initialisation_grille.c.i
 
-CMakeFiles/New_project_ifb.dir/Etat_Grille.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Etat_Grille.c.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\Etat_Grille.c" -o CMakeFiles\New_project_ifb.dir\Etat_Grille.c.s
+CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Initialisation_grille.c" -o CMakeFiles\New_project_ifb.dir\Initialisation_grille.c.s
+
+CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
+CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj: ../Type_de_partie.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Type_de_partie.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Type_de_partie.c"
+
+CMakeFiles/New_project_ifb.dir/Type_de_partie.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Type_de_partie.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Type_de_partie.c" > CMakeFiles\New_project_ifb.dir\Type_de_partie.c.i
+
+CMakeFiles/New_project_ifb.dir/Type_de_partie.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Type_de_partie.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Type_de_partie.c" -o CMakeFiles\New_project_ifb.dir\Type_de_partie.c.s
+
+CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
+CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: ../Sauvegarde.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Sauvegarde.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Sauvegarde.c"
+
+CMakeFiles/New_project_ifb.dir/Sauvegarde.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Sauvegarde.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Sauvegarde.c" > CMakeFiles\New_project_ifb.dir\Sauvegarde.c.i
+
+CMakeFiles/New_project_ifb.dir/Sauvegarde.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Sauvegarde.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Sauvegarde.c" -o CMakeFiles\New_project_ifb.dir\Sauvegarde.c.s
+
+CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj: CMakeFiles/New_project_ifb.dir/flags.make
+CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj: ../Etat_partie.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\New_project_ifb.dir\Etat_partie.c.obj -c "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Etat_partie.c"
+
+CMakeFiles/New_project_ifb.dir/Etat_partie.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/New_project_ifb.dir/Etat_partie.c.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Etat_partie.c" > CMakeFiles\New_project_ifb.dir\Etat_partie.c.i
+
+CMakeFiles/New_project_ifb.dir/Etat_partie.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/New_project_ifb.dir/Etat_partie.c.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\Etat_partie.c" -o CMakeFiles\New_project_ifb.dir\Etat_partie.c.s
 
 # Object files for target New_project_ifb
 New_project_ifb_OBJECTS = \
 "CMakeFiles/New_project_ifb.dir/main.c.obj" \
-"CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj" \
 "CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj" \
-"CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj"
+"CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj" \
+"CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj" \
+"CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj" \
+"CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj"
 
 # External object files for target New_project_ifb
 New_project_ifb_EXTERNAL_OBJECTS =
 
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/main.c.obj
-New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Depart_Grille.c.obj
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Execution_tir.c.obj
-New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Etat_Grille.c.obj
+New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj
+New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj
+New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj
+New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/Etat_partie.c.obj
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/build.make
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/linklibs.rsp
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/objects1.rsp
 New_project_ifb.exe: CMakeFiles/New_project_ifb.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable New_project_ifb.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable New_project_ifb.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\New_project_ifb.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -158,6 +188,6 @@ CMakeFiles/New_project_ifb.dir/clean:
 .PHONY : CMakeFiles/New_project_ifb.dir/clean
 
 CMakeFiles/New_project_ifb.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB27\cmake-build-debug\CMakeFiles\New_project_ifb.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug" "C:\Users\Administrateur\OneDrive - Universite De Technologie De Belfort-Montbeliard\New-project-IFB55\cmake-build-debug\CMakeFiles\New_project_ifb.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/New_project_ifb.dir/depend
 
