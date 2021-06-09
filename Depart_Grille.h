@@ -138,6 +138,14 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
  */
 int bateau_a_deplacer (Boat *bateau, Grid cases_touchees);
 
+/**
+ * Efface l'ancienne position d'un bateau dans la grille de bateau lorsque celui-ci est dépplacé en mode Active
+ * @param indice_bateau le numero du bateau déplacé
+ * @param bateau le bateau déplacé
+ * @param tableau_bateau la grille dans laquelle se trouve le bateau
+ */
 void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau);
+
+void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

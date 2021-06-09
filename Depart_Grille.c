@@ -364,6 +364,8 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
         printf("%d\n", indice_bateau);
         show_grid(grille_bateaux);
+        nouvelle_position(indice_bateau, bateau, &grille_bateaux);
+        show_grid(grille_bateaux);
         do{
             check = 0;
             printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
@@ -385,7 +387,7 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
     printf("Youpi vous avez gagne !");
 }
 
-int bateau_deplace(Boat *bateau, Grid cases_touchees){
+int bateau_a_deplacer(Boat *bateau, Grid cases_touchees){
     int i, indice_bateau, a;
     int somme = 0;
     int bateau_touche[5] = {0};
@@ -430,13 +432,41 @@ int bateau_deplace(Boat *bateau, Grid cases_touchees){
 void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau){
     int i;
 
-    if(bateau[indice_bateau].orientation == 'H'){
-        for(i = bateau[indice_bateau].position_x; i <= bateau[indice_bateau].position_x +bateau[indice_bateau].taille; i++){
-            (*tableau_bateau).grille[i][bateau[indice_bateau].position_y] = '_';
+    if(bateau[indice_bateau].orientation == 'H'){                                           //Lorsque le bateau est horizontale
+        for(i = bateau[indice_bateau].position_x;                                           //Parcourir le bateau sur toute sa longueur dans la grille de bateau
+        i < bateau[indice_bateau].position_x +bateau[indice_bateau].taille; i++){
+            (*tableau_bateau).grille[i][bateau[indice_bateau].position_y] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
+        }                                                                                   //par un caractère indiquant une case vide
+    }else{                                                                                  //Lorsque le bateau est verticale
+        for(i = bateau[indice_bateau].position_y;                                           //Parcourir le bateau sur toute sa longueur dans la grille de bateau
+        i < bateau[indice_bateau].position_y + bateau[indice_bateau].taille; i++){
+            (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
+        }                                                                                   //par un caractère indiquant une case vide
+    }
+}
+
+void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
+    int nb_case, i, orientation;
+    do {
+        orientation = rand()%2;
+        if(orientation == 1){              //Cas horizontale
+            bateau[indice].orientation = 'H';
+            nb_case = rand()%3 + 1;
+            bateau[indice].position_x = bateau[indice].position_x + nb_case;
+        }else{
+            bateau[indice].orientation = 'V';
+            nb_case = rand()%3 + 1;
+            bateau[indice].position_y = bateau[indice].position_y + nb_case;
+        }
+    } while (app_grille(bateau, indice) == 1 || chevauchement(bateau, indice, *tableau_bateau) == 1);
+
+    if(orientation == 1){
+        for(i = bateau[indice].position_x; i <= bateau[indice].position_x + bateau[indice].taille; i++){
+            (*tableau_bateau).grille[i][bateau[indice].position_y] = indice + 'a';
         }
     }else{
-        for(i = bateau[indice_bateau].position_y; i <= bateau[indice_bateau].position_y + bateau[indice_bateau].taille; i++){
-            (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';
+        for(i = bateau[indice].position_y; i <= bateau[indice].position_y + bateau[indice].taille; i++) {
+            (*tableau_bateau).grille[bateau[indice].position_x][i] = indice + 'a';
         }
     }
 }
