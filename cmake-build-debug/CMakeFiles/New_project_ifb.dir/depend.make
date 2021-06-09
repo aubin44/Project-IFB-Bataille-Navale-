@@ -15,6 +15,7 @@ CMakeFiles/New_project_ifb.dir/Initialisation_grille.c.obj: ../Initialisation_gr
 CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: ../Initialisation_grille.h
 CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: ../Sauvegarde.c
 CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: ../Sauvegarde.h
+CMakeFiles/New_project_ifb.dir/Sauvegarde.c.obj: ../Type_de_partie.h
 
 CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj: ../Etat_partie.h
 CMakeFiles/New_project_ifb.dir/Type_de_partie.c.obj: ../Execution_tir.h

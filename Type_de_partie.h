@@ -13,6 +13,20 @@
 void choix_difficult(Inventory *stuff);
 
 /**
+ * Demande le mode de jeu désiré par le joueur et démarre une nouvelle partie dans ce mode
+ * @param grille_de_jeu la grille de jeu
+ * @param grille_bateaux le tableau de bateau
+ * @param bateau les bateau sur la grille
+ * @param check2 variable permettant de vérifier que le joueur saisisse un mode existant
+ * @param stuff l'inventaire de missile
+ * @param rep la variable stockant la réponse du joueur concernant le mode de jeu désiré
+ * @param Coo_X le point d'impact du tir sur les abscisses
+ * @param Coo_Y le point d'impact du tir sur les ordonnées
+ * @param sauvegarde
+ */
+void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *bateau, int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde);
+
+/**
  * Lancement du mode de jeu Classique
  * @param stuff le nombre de missile
  * @param grille_bateaux le tableau où sont placés les bateaux

@@ -29,4 +29,6 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode);
  */
 void init_save(Grid *tableau_bateau, Grid *grille);
 
+void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu);
+
 #endif //NEW_PROJECT_IFB_SAUVEGARDE_H

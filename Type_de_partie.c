@@ -63,6 +63,28 @@ void choix_difficult(Inventory *stuff){
 
 }
 
+void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *bateau, int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde){
+    do {
+        check2 = 0;
+        printf("Veuillez saisir le mode de jeu souhaite :\n -C : Mode Classique\n -B : Mode Blind\n -A : Mode Active\n");
+        fflush(stdin);
+        rep = getchar();                                                                                    //Récupération de la réponse du joueur
+        rep = toupper(rep);
+
+        if (rep == 'C') {                                                                                   //Lancement du mode de jeu correspondant à cette réponse
+            classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+        } else if (rep == 'B') {
+            blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+        } else if (rep == 'A') {
+            printf("Le mode active n'est pas termine !\n");
+            active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, &bateau);
+        } else {                                                                                            //Si le mode saisie par le joueur n'existe pas
+            printf("Le mode saisie n'existe pas !\n");                                              //Demander un mode existant
+            check2 = 1;
+        }
+    } while (check2 == 1);
+}
+
 int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde){
     int check, nb_bateau;
     char missile, rep;
@@ -237,3 +259,4 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
     printf("Youpi vous avez gagne !");
 }
+

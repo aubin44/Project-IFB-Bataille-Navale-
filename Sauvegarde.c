@@ -3,6 +3,7 @@
 //
 
 #include "Sauvegarde.h"
+#include "Type_de_partie.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -58,5 +59,20 @@ void init_save(Grid *tableau_bateau, Grid *grille){
                 (*grille).grille[a][b] = 'X';
             }
         }
+    }
+}
+
+void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu){
+    load(&grille_bateaux, &stuff, &mode);
+    if(mode == '1'){
+        /*show_grid(grille_bateaux);*/          //Verif code
+        sauvegarde = 'O';
+        classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+    }else if(mode == '2'){
+        /*show_grid(grille_bateaux);*/
+        sauvegarde = 'O';
+        blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
+    }else{
+        printf("ERREUR");
     }
 }
