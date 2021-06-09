@@ -93,11 +93,11 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
-    if(sauvegarde != 'O') {
+    if(sauvegarde != 'O') {                                         //Si sauvegarde différent de 'O' cela signifie qu'on lance une nouvelle partie
         choix_difficult(&stuff);
         show_grid(grille_de_jeu);
-    }else{
-        init_save(&grille_bateaux, &grille_de_jeu);
+    }else{                                                          //Sinon on récupère la grille de bateaux de la dernière partie
+        init_save(&grille_bateaux, &grille_de_jeu);                 //On initialise la grille de jeu à l'aide de cette grille de bateaux
         show_grid(grille_de_jeu);
     }
     do {
@@ -110,15 +110,15 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
         }
         do {
             check = 0;
-            choix_missile(&missile);
+            choix_missile(&missile);                                //Demander le type de missile que l'on veut pour effectuer le tir
             tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
         } while (check == 1);
 
         show_grid(grille_de_jeu);
 
         /*show_grid(grille_bateaux);*/                  //Verif code
-        missiles_restants(stuff);
-        bateaux_restants(grille_bateaux, &nb_bateau);
+        missiles_restants(stuff);                                   //Afficher le nombre de missile restant à la fin du tour
+        bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         do {
             check = 0;
             printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
@@ -149,10 +149,10 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
 
-    if(sauvegarde != 'O') {
-        choix_difficult(&stuff);
+    if(sauvegarde != 'O') {                                         //Si sauvegarde différent de 'O' cela signifie qu'on lance une nouvelle partie
+        choix_difficult(&stuff);                                    //On initialise la grille de jeu à l'aide de cette grille de bateaux
         /*show_grid(grille_de_jeu);*/           //Verif code
-    }else{
+    }else{                                                          //Sinon on récupère la grille de bateaux de la dernière partie
         init_save(&grille_bateaux, &grille_de_jeu);
         /*show_grid(grille_de_jeu);*/           //Verif code
     }
@@ -167,7 +167,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         }
         do {
             check = 0;
-            choix_missile(&missile);
+            choix_missile(&missile);                                //Demander le type de missile que l'on veut pour effectuer le tir
             tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
         } while (check == 1);
 
@@ -175,8 +175,8 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         /*show_grid(grille_de_jeu);*/                    //Verif code
 
         /*show_grid(grille_bateaux);*/                  //Verif code
-        missiles_restants(stuff);
-        bateaux_restants(grille_bateaux, &nb_bateau);
+        missiles_restants(stuff);                                   //Afficher le nombre de missile restant à la fin du tour
+        bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         do {
             check = 0;
             printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
@@ -199,18 +199,18 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
 }
 
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau){
-    int check, nb_bateau;
-    char missile, rep, indice_bateau;
+    int check, nb_bateau, indice_bateau;
+    char missile, rep;
     int mode = 3;                                                   //mode de jeu utilisé pour la sauvegarde
 
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
-    if(sauvegarde != 'O'){
+    if(sauvegarde != 'O'){                                          //Si sauvegarde différent de 'O' cela signifie qu'on lance une nouvelle partie
         choix_difficult(&stuff);
         show_grid(grille_de_jeu);
-    }else{
-        init_save(&grille_bateaux, &grille_de_jeu);
+    }else{                                                          //Sinon on récupère la grille de bateaux de la dernière partie
+        init_save(&grille_bateaux, &grille_de_jeu);                 //On initialise la grille de jeu à l'aide de cette grille de bateaux
         show_grid(grille_de_jeu);
     }
     init_grille(&cases_touchees);
@@ -224,17 +224,20 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         }
         do {
             check = 0;
-            choix_missile(&missile);
+            choix_missile(&missile);                                //Demander le type de missile que l'on veut pour effectuer le tir
             tir(Coo_X, Coo_Y, &grille_de_jeu, &grille_bateaux, missile, &stuff, &check, &cases_touchees);
         } while (check == 1);
 
         show_grid(grille_de_jeu);
 
         show_grid(grille_bateaux);                  //Verif code
-        missiles_restants(stuff);
-        bateaux_restants(grille_bateaux, &nb_bateau);
-        indice_bateau = bateau_a_deplacer(bateau, cases_touchees);
+        missiles_restants(stuff);                                   //Afficher le nombre de missile restant à la fin du tour
+        bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
+        /*indice_bateau = bateau_a_deplacer(bateau, cases_touchees);*/
+        bateau_a_deplacer(bateau, cases_touchees, &indice_bateau);
+        printf("%d", indice_bateau);
         supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
+
         printf("%d\n", indice_bateau);
         show_grid(grille_bateaux);
         nouvelle_position(indice_bateau, bateau, &grille_bateaux);

@@ -55,28 +55,28 @@ void affichage_cases_blind(Grid cases_touchees){
     }
 }
 
-int bateau_a_deplacer(Boat *bateau, Grid cases_touchees){
-    int i, indice_bateau, a;
+void bateau_a_deplacer(Boat *bateau, Grid cases_touchees, int *indice_bateau){
+    int i, a, indice;
     int somme = 0;
     int bateau_touche[5] = {0};
 
     srand(time(0));
 
-    for(indice_bateau = 0; indice_bateau < 5; indice_bateau++) {                            //Effectuer une vérification sur chacun des bateaux
+    for(indice = 0; indice < 5; indice++) {                            //Effectuer une vérification sur chacun des bateaux
 
-        if (bateau[indice_bateau].orientation == 'H') {                                     //Lorsque le bateau est horizontale, parcourir suivant les abscisses
-            i = bateau[indice_bateau].position_x;
-            while (i <= bateau[indice_bateau].position_x + bateau[indice_bateau].taille){   //Parcourir le bateau sur toute sa longueur
-                if (cases_touchees.grille[i][bateau[indice_bateau].position_y] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
-                    bateau_touche[indice_bateau] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
+        if (bateau[indice].orientation == 'H') {                                     //Lorsque le bateau est horizontale, parcourir suivant les abscisses
+            i = bateau[indice].position_x;
+            while (i <= bateau[indice].position_x + bateau[indice].taille){   //Parcourir le bateau sur toute sa longueur
+                if (cases_touchees.grille[i][bateau[indice].position_y] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
+                    bateau_touche[indice] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
                 }
                 i = i + 1;
             }
         } else {                                                                            //Lorque le bateau est verticale, parcourir suivant les ordonnées
-            i = bateau[indice_bateau].position_y;
-            while( i <= bateau[indice_bateau].position_y + bateau[indice_bateau].taille){   //Parcourir le bateau sur toute sa longueur
-                if (cases_touchees.grille[bateau[indice_bateau].position_x][i] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
-                    bateau_touche[indice_bateau] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
+            i = bateau[indice].position_y;
+            while( i <= bateau[indice].position_y + bateau[indice].taille){   //Parcourir le bateau sur toute sa longueur
+                if (cases_touchees.grille[bateau[indice].position_x][i] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
+                    bateau_touche[indice] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
                 }
                 i = i + 1;
             }
@@ -88,12 +88,12 @@ int bateau_a_deplacer(Boat *bateau, Grid cases_touchees){
     }
     if(somme == 5){
         printf("Aucun bateau n'a ete deplace car ils ont tous ete touches !\n");
-        return -1;                                                                          //Retourner '-1' pour dire que tous les bateaux ont été touchés
+        *indice_bateau = -1;                                                                          //Retourner '-1' pour dire que tous les bateaux ont été touchés
     }else{
         do{
-            indice_bateau = rand()% 5;                                                      //Générer un nombre appartenant à l'intervalle [0; 4]
-        } while (bateau_touche[indice_bateau] == 1);                                        //Recommencer tant que le bateau correspondant à se nombre a été touché
-        return indice_bateau;                                                               //Retourner l'indice d'un bateau non touché
+            indice = rand()% 5;                                                      //Générer un nombre appartenant à l'intervalle [0; 4]
+        } while (bateau_touche[indice] == 1);                                        //Recommencer tant que le bateau correspondant à se nombre a été touché
+        *indice_bateau = indice;
     }
 }
 

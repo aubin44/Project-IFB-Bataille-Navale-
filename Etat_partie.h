@@ -36,7 +36,7 @@ void affichage_cases_blind(Grid cases_touchees);
  * @param cases_touchees le tableau de bateau
  * @return '-1' si tous les bateaux ont été touchés ou l'indice d'un des bateau choisit aléatoirement sinon
  */
-int bateau_a_deplacer (Boat *bateau, Grid cases_touchees);
+void bateau_a_deplacer (Boat *bateau, Grid cases_touchees, int *indice_bateau);
 
 /**
  * Efface l'ancienne position d'un bateau dans la grille de bateau lorsque celui-ci est dépplacé en mode Active
