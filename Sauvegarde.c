@@ -67,11 +67,11 @@ void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, c
     load(&grille_bateaux, &stuff, &mode);                                           //et le mode de jeu de la dernière partie
     if(mode == '1'){                                                                //Si c'est le premier mode
         /*show_grid(grille_bateaux);*/          //Verif code
-        sauvegarde = 'O';
+        sauvegarde = 'O';                                           //Initialisation de sauvegarde à 'O' pour lancer le mode Classique avec les modification de la dernière partie
         classique(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);  //Lancer le mode classique
     }else if(mode == '2'){                                                          //Si c'est le second mode
         /*show_grid(grille_bateaux);*/
-        sauvegarde = 'O';
+        sauvegarde = 'O';                                           //Initialisation de sauvegarde à 'O' pour lancer le mode Blind avec les modification de la dernière partie
         blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);      //Lancer le mode Blind
     }else{
         printf("ERREUR");
