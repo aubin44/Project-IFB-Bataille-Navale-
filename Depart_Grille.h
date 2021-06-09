@@ -136,6 +136,8 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
  * @param cases_touchees le tableau de bateau
  * @return '-1' si tous les bateaux ont été touchés ou l'indice d'un des bateau choisit aléatoirement sinon
  */
-int bateau_deplace (Boat *bateau, Grid cases_touchees);
+int bateau_a_deplacer (Boat *bateau, Grid cases_touchees);
+
+void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H

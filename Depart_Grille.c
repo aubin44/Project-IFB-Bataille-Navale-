@@ -327,7 +327,7 @@ void init_save(Grid *tableau_bateau, Grid *grille){
 
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau){
     int check, nb_bateau;
-    char missile, rep;
+    char missile, rep, indice_bateau;
     int mode = 3;                                                //mode de jeu utilisé pour la sauvegarde
 
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
@@ -360,7 +360,10 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         show_grid(grille_bateaux);                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
-        printf("%d", bateau_deplace(bateau, cases_touchees));
+        indice_bateau = bateau_a_deplacer(bateau, cases_touchees);
+        supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
+        printf("%d\n", indice_bateau);
+        show_grid(grille_bateaux);
         do{
             check = 0;
             printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
@@ -421,5 +424,19 @@ int bateau_deplace(Boat *bateau, Grid cases_touchees){
             indice_bateau = rand()% 5;                                                      //Générer un nombre appartenant à l'intervalle [0; 4]
         } while (bateau_touche[indice_bateau] == 1);                                        //Recommencer tant que le bateau correspondant à se nombre a été touché
         return indice_bateau;                                                               //Retourner l'indice d'un bateau non touché
+    }
+}
+
+void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau){
+    int i;
+
+    if(bateau[indice_bateau].orientation == 'H'){
+        for(i = bateau[indice_bateau].position_x; i <= bateau[indice_bateau].position_x +bateau[indice_bateau].taille; i++){
+            (*tableau_bateau).grille[i][bateau[indice_bateau].position_y] = '_';
+        }
+    }else{
+        for(i = bateau[indice_bateau].position_y; i <= bateau[indice_bateau].position_y + bateau[indice_bateau].taille; i++){
+            (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';
+        }
     }
 }
