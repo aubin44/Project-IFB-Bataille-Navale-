@@ -357,10 +357,10 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
         show_grid(grille_de_jeu);
 
-        /*show_grid(grille_bateaux);*/                  //Verif code
+        show_grid(grille_bateaux);                  //Verif code
         missiles_restants(stuff);
         bateaux_restants(grille_bateaux, &nb_bateau);
-        printf("%d", bateau_deplace(&bateau, cases_touchees));
+        printf("%d", bateau_deplace(bateau, cases_touchees));
         do{
             check = 0;
             printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
@@ -384,44 +384,42 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
 int bateau_deplace(Boat *bateau, Grid cases_touchees){
     int i, indice_bateau, a;
-    int somme;
-    int bateau_touche[5];
+    int somme = 0;
+    int bateau_touche[5] = {0};
 
     srand(time(0));
 
-    for(indice_bateau = 0; indice_bateau < 5; indice_bateau++) {
-        for (a = 0; a < 5; a++) {
-            if (bateau[indice_bateau].orientation == 'H') {
-                for (i = bateau[indice_bateau].position_x;
-                     i <= bateau[indice_bateau].taille + bateau[indice_bateau].position_x; i++) {
-                    if (cases_touchees.grille[i][bateau[indice_bateau].position_y] == 'X') {
-                        bateau_touche[a] = 1;
-                    } else {
-                        bateau_touche[a] = 0;
-                    }
+    for(indice_bateau = 0; indice_bateau < 5; indice_bateau++) {                            //Effectuer une vérification sur chacun des bateaux
+
+        if (bateau[indice_bateau].orientation == 'H') {                                     //Lorsque le bateau est horizontale, parcourir suivant les abscisses
+            i = bateau[indice_bateau].position_x;
+            while (i <= bateau[indice_bateau].position_x + bateau[indice_bateau].taille){   //Parcourir le bateau sur toute sa longueur
+                if (cases_touchees.grille[i][bateau[indice_bateau].position_y] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
+                    bateau_touche[indice_bateau] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
                 }
-            } else {
-                for (i = bateau[indice_bateau].position_y;
-                     i <= bateau[indice_bateau].taille + bateau[indice_bateau].position_y; i++) {
-                    if (cases_touchees.grille[bateau[indice_bateau].position_x][i] == 'X') {
-                        bateau_touche[a] = 1;
-                    } else {
-                        bateau_touche[a] = 0;
-                    }
+                i = i + 1;
+            }
+        } else {                                                                            //Lorque le bateau est verticale, parcourir suivant les ordonnées
+            i = bateau[indice_bateau].position_y;
+            while( i <= bateau[indice_bateau].position_y + bateau[indice_bateau].taille){   //Parcourir le bateau sur toute sa longueur
+                if (cases_touchees.grille[bateau[indice_bateau].position_x][i] == 'X'){     //Si une de ses cases est touchées (symbole 'X')
+                    bateau_touche[indice_bateau] = 1;                                       //Noter '1' dans le tableau pour dire que le bateau a été touché
                 }
+                i = i + 1;
             }
         }
     }
+    somme = 0;
     for(a = 0; a < 5; a++){
-        somme = bateau_touche[a];
+        somme = somme + bateau_touche[a];                                                   //Si tous les bateaux ont été touchés alors somme = 5
     }
     if(somme == 5){
-        printf("Aucun bateau n'a été déplacé car ils ont tous été touchés !\n");
-        return -1;
+        printf("Aucun bateau n'a ete deplace car ils ont tous ete touches !\n");
+        return -1;                                                                          //Retourner '-1' pour dire que tous les bateaux ont été touchés
     }else{
         do{
-            indice_bateau = rand()% 5;
-        } while (bateau_touche[indice_bateau] == 1);
-        return indice_bateau;
+            indice_bateau = rand()% 5;                                                      //Générer un nombre appartenant à l'intervalle [0; 4]
+        } while (bateau_touche[indice_bateau] == 1);                                        //Recommencer tant que le bateau correspondant à se nombre a été touché
+        return indice_bateau;                                                               //Retourner l'indice d'un bateau non touché
     }
 }

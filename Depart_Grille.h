@@ -130,7 +130,12 @@ void load(Grid *tableau_bateau, Inventory *missile, int *mode);
 void init_save(Grid *tableau_bateau, Grid *grille);
 
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau);
-
+/**
+ * Cherche aléatoirement un bateau pouvant être déplacé (donc un bateau n'ayant pas été touché)
+ * @param bateau les bateaux se trouvant sur la grille
+ * @param cases_touchees le tableau de bateau
+ * @return '-1' si tous les bateaux ont été touchés ou l'indice d'un des bateau choisit aléatoirement sinon
+ */
 int bateau_deplace (Boat *bateau, Grid cases_touchees);
 
 #endif //NEW_PROJECT_IFB_DEPART_GRILLE_H
