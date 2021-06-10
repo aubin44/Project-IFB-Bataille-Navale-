@@ -55,7 +55,7 @@ void affichage_cases_blind(Grid cases_touchees){
     }
 }
 
-void bateau_a_deplacer(Boat *bateau, Grid cases_touchees, int *indice_bateau){
+void bateau_a_deplacer(Boat bateau[], Grid cases_touchees, int *indice_bateau){
     int i, a, indice;
     int somme = 0;
     int bateau_touche[5] = {0};
@@ -63,7 +63,6 @@ void bateau_a_deplacer(Boat *bateau, Grid cases_touchees, int *indice_bateau){
     srand(time(0));
 
     for(indice = 0; indice < 5; indice++) {                            //Effectuer une vérification sur chacun des bateaux
-
         if (bateau[indice].orientation == 'H') {                                     //Lorsque le bateau est horizontale, parcourir suivant les abscisses
             i = bateau[indice].position_x;
             while (i <= bateau[indice].position_x + bateau[indice].taille){   //Parcourir le bateau sur toute sa longueur

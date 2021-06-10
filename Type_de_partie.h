@@ -24,7 +24,7 @@ void choix_difficult(Inventory *stuff);
  * @param Coo_Y le point d'impact du tir sur les ordonnées
  * @param sauvegarde
  */
-void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *bateau, int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde);
+void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat bateau[], int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde);
 
 /**
  * Lancement du mode de jeu Classique
@@ -50,6 +50,6 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
  */
 int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
-int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau);
+int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat bateau[]);
 
 #endif //NEW_PROJECT_IFB_TYPE_DE_PARTIE_H

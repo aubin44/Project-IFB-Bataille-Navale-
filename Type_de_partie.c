@@ -63,7 +63,7 @@ void choix_difficult(Inventory *stuff){
 
 }
 
-void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *bateau, int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde){
+void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat bateau[], int check2, Inventory stuff, char rep, int Coo_X, int Coo_Y, char sauvegarde){
     do {
         check2 = 0;
         printf("Veuillez saisir le mode de jeu souhaite :\n -C : Mode Classique\n -B : Mode Blind\n -A : Mode Active\n");
@@ -77,7 +77,7 @@ void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat *ba
             blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         } else if (rep == 'A') {
             printf("Le mode active n'est pas termine !\n");
-            active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, &bateau);
+            active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, bateau);
         } else {                                                                                            //Si le mode saisie par le joueur n'existe pas
             printf("Le mode saisie n'existe pas !\n");                                              //Demander un mode existant
             check2 = 1;
@@ -198,7 +198,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
     printf("Youpi vous avez gagne !");
 }
 
-int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat *bateau){
+int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat bateau[]){
     int check, nb_bateau, indice_bateau;
     char missile, rep;
     int mode = 3;                                                   //mode de jeu utilisé pour la sauvegarde
@@ -219,7 +219,7 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         check_loose(stuff);
         choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
         while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'E'){          //Demande au joueur de choisir une autre case
-            printf("Vous avez deja tirez sur cette case !");
+            printf("Vous avez deja tirez sur cette case !\n");
             choix_coo_de_tir(&Coo_X, &Coo_Y);
         }
         do {
@@ -235,12 +235,13 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         /*indice_bateau = bateau_a_deplacer(bateau, cases_touchees);*/
         bateau_a_deplacer(bateau, cases_touchees, &indice_bateau);
-        printf("%d", indice_bateau);
+        printf("%d", indice_bateau);        //Verif code
+        show_grid(grille_bateaux);                  //Verif code
         supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
 
-        printf("%d\n", indice_bateau);
-        show_grid(grille_bateaux);
-        nouvelle_position(indice_bateau, bateau, &grille_bateaux);
+        printf("%d\n", indice_bateau);      //Verif code
+        show_grid(grille_bateaux);                 //Verif code
+        nouvelle_position(indice_bateau, bateau, &grille_bateaux);  //PB sur cette fonction (mauvaise attribution de place ou boucle infinie)
         show_grid(grille_bateaux);
         do{
             check = 0;
