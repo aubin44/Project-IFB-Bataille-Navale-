@@ -39,6 +39,6 @@ void init_save(Grid *tableau_bateau, Grid *grille);
  * @param Coo_Y coordonnée du point d'impact en ordonnée
  * @param grille_de_jeu la grille affiché au joueur
  */
-void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu);
+void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu, Boat bateau[]);
 
 #endif //NEW_PROJECT_IFB_SAUVEGARDE_H

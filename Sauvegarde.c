@@ -62,7 +62,7 @@ void init_save(Grid *tableau_bateau, Grid *grille){
     }
 }
 
-void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu){
+void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, char sauvegarde, int Coo_X, int Coo_Y, Grid grille_de_jeu, Boat bateau[]){
                                                                                     //Recharger le tableau de bateau, l'inventaire de missile
     load(&grille_bateaux, &stuff, &mode);                                           //et le mode de jeu de la dernière partie
     if(mode == '1'){                                                                //Si c'est le premier mode

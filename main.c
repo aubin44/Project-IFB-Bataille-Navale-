@@ -33,7 +33,7 @@ int main(){
     rep = toupper(rep);
     if(rep == 'C'){
 
-        lancement_mode_sauvegarde(stuff, mode, grille_bateaux, sauvegarde, Coo_X, Coo_Y, grille_de_jeu);
+        lancement_mode_sauvegarde(stuff, mode, grille_bateaux, sauvegarde, Coo_X, Coo_Y, grille_de_jeu, bateau);
 
     }else if( rep == 'N') {
 

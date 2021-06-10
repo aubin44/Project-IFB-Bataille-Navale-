@@ -76,7 +76,6 @@ void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat bat
         } else if (rep == 'B') {
             blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         } else if (rep == 'A') {
-            printf("Le mode active n'est pas termine !\n");
             active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, bateau);
         } else {                                                                                            //Si le mode saisie par le joueur n'existe pas
             printf("Le mode saisie n'existe pas !\n");                                              //Demander un mode existant
@@ -121,7 +120,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         do {
             check = 0;
-            printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            printf("\nVoulez vous continuer a jouer ?\n\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
             fflush(stdin);
             rep = getchar();
             rep = toupper(rep);
@@ -179,7 +178,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         do {
             check = 0;
-            printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            printf("\nVoulez vous continuer a jouer ?\n\nn- J : Jouer\n- S : Sauvegarder et Quitter\n");
             fflush(stdin);
             rep = getchar();
             rep = toupper(rep);
@@ -203,6 +202,10 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
     char missile, rep;
     int mode = 3;                                                   //mode de jeu utilisé pour la sauvegarde
 
+    printf("En mode active les bateaux n'ayant pas ete touches"
+           " peuvent se deplacer aleatoirement dans la grille, il est"
+           " donc possible que sur une case ou il y avait de l'eau lorsque"
+           " vous avez tire il y ait maintenant un bateau\n");
     Grid cases_touchees;                                            //Grille utilisée uniquement pour le mode Blind
     cases_touchees.hauteur = 10;
     cases_touchees.largeur = 10;
@@ -230,7 +233,7 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
         show_grid(grille_de_jeu);
 
-        show_grid(grille_bateaux);                  //Verif code
+        /*show_grid(grille_bateaux);*/                      //Verif code
         missiles_restants(stuff);                                   //Afficher le nombre de missile restant à la fin du tour
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
 
@@ -239,13 +242,13 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
             /*show_grid(grille_bateaux);*/                  //Verif code
             supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
 
-            /*show_grid(grille_bateaux);*/                 //Verif code
+            /*show_grid(grille_bateaux);*/                  //Verif code
             nouvelle_position(indice_bateau, bateau,&grille_bateaux);  //PB sur cette fonction (mauvaise attribution de place ou boucle infinie)
         }
-        show_grid(grille_bateaux);
+        /*show_grid(grille_bateaux);*/                      //Verif code
         do{
             check = 0;
-            printf("Voulez vous continuer a jouer ?\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            printf("\nVoulez vous continuer a jouer ?\n\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
             fflush(stdin);
             rep = getchar();
             rep = toupper(rep);
