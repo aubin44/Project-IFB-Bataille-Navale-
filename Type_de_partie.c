@@ -136,7 +136,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
 
     }while(nb_bateau > 0);
 
-    printf("Youpi vous avez gagne !");
+    printf("Felicitation vous avez gagne !");
 }
 
 int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde){
@@ -178,7 +178,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         do {
             check = 0;
-            printf("\nVoulez vous continuer a jouer ?\n\nn- J : Jouer\n- S : Sauvegarder et Quitter\n");
+            printf("\nVoulez vous continuer a jouer ?\n\n- J : Jouer\n- S : Sauvegarder et Quitter\n");
             fflush(stdin);
             rep = getchar();
             rep = toupper(rep);
@@ -194,7 +194,7 @@ int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, i
 
     }while(nb_bateau > 0);
 
-    printf("Youpi vous avez gagne !");
+    printf("Felicitation vous avez gagne !");
 }
 
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat bateau[]){
@@ -264,6 +264,6 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
 
     }while(nb_bateau > 0);
 
-    printf("Youpi vous avez gagne !");
+    printf("Felicitation vous avez gagne !");
 }
 
