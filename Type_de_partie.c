@@ -233,13 +233,15 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         show_grid(grille_bateaux);                  //Verif code
         missiles_restants(stuff);                                   //Afficher le nombre de missile restant à la fin du tour
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
-        /*indice_bateau = bateau_a_deplacer(bateau, cases_touchees);*/
-        bateau_a_deplacer(bateau, cases_touchees, &indice_bateau);
-        show_grid(grille_bateaux);                  //Verif code
-        supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
 
-        show_grid(grille_bateaux);                 //Verif code
-        nouvelle_position(indice_bateau, bateau, &grille_bateaux);  //PB sur cette fonction (mauvaise attribution de place ou boucle infinie)
+        bateau_a_deplacer(bateau, cases_touchees, &indice_bateau);
+        if(indice_bateau != -1) {
+            /*show_grid(grille_bateaux);*/                  //Verif code
+            supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
+
+            /*show_grid(grille_bateaux);*/                 //Verif code
+            nouvelle_position(indice_bateau, bateau,&grille_bateaux);  //PB sur cette fonction (mauvaise attribution de place ou boucle infinie)
+        }
         show_grid(grille_bateaux);
         do{
             check = 0;

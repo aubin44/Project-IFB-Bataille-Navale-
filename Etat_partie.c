@@ -110,26 +110,38 @@ void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_batea
             (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
         }                                                                                   //par un caractère indiquant une case vide
     }
-    printf("deplacement du bateau de taille %d\n", (bateau[indice_bateau]).taille);
 }
 
 void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
-    int nb_case, i, orientation;
+    int nb_case, i, orientation, signe;
+    int tampon_x = bateau[indice].position_x;
+    int tampon_y = bateau[indice].position_y;
+
     do {
         orientation = rand()%2;
         if(orientation == 1){              //Cas horizontale
             bateau[indice].orientation = 'H';
             nb_case = rand()%3 + 1;
-            bateau[indice].position_x = bateau[indice].position_x + nb_case;
+            signe = rand()%2;
+            if(signe == 1) {
+                bateau[indice].position_x = tampon_x + nb_case;
+            }else{
+                bateau[indice].position_x = tampon_x - nb_case;
+            }
         }else{
             bateau[indice].orientation = 'V';
             nb_case = rand()%3 + 1;
-            bateau[indice].position_y = bateau[indice].position_y + nb_case;
+            signe = rand()%2;
+            if(signe == 1) {
+                bateau[indice].position_y = tampon_y + nb_case;
+            }else{
+                bateau[indice].position_y = tampon_y - nb_case;
+            }
         }
-        printf("position x : %d, position y : %c, orientation : %c\n", bateau[indice].position_x + 1, bateau[indice].position_y + 1 + 'A', bateau[indice].orientation);
+
     } while (app_grille(bateau, indice) == 1 || chevauchement(bateau, indice, *tableau_bateau) == 1);
 
-    printf("deplacement du bateau de taille %d de %d cases\n", (bateau[indice]).taille, nb_case);
+    printf("Un bateau de taille %d s'est deplace de %d cases\nInfo : Il a desormais une orientation %c\n", (bateau[indice]).taille, nb_case, (bateau[indice].orientation));
     if(orientation == 1){
         for(i = bateau[indice].position_x; i < bateau[indice].position_x + bateau[indice].taille; i++){
             (*tableau_bateau).grille[i][bateau[indice].position_y] = indice + 'a';

@@ -73,6 +73,9 @@ void lancement_mode_sauvegarde(Inventory stuff, int mode, Grid grille_bateaux, c
         /*show_grid(grille_bateaux);*/
         sauvegarde = 'O';                                           //Initialisation de sauvegarde à 'O' pour lancer le mode Blind avec les modification de la dernière partie
         blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);      //Lancer le mode Blind
+    }else if(mode == '3') {
+        sauvegarde = 'O';
+        active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, bateau);
     }else{
         printf("ERREUR");
     }
