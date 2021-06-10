@@ -235,11 +235,9 @@ int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, 
         bateaux_restants(grille_bateaux, &nb_bateau);               //Afficher le nombre de bateau restant à la fin du tour
         /*indice_bateau = bateau_a_deplacer(bateau, cases_touchees);*/
         bateau_a_deplacer(bateau, cases_touchees, &indice_bateau);
-        printf("%d", indice_bateau);        //Verif code
         show_grid(grille_bateaux);                  //Verif code
         supp_ancienne_position(indice_bateau, bateau, &grille_bateaux);
 
-        printf("%d\n", indice_bateau);      //Verif code
         show_grid(grille_bateaux);                 //Verif code
         nouvelle_position(indice_bateau, bateau, &grille_bateaux);  //PB sur cette fonction (mauvaise attribution de place ou boucle infinie)
         show_grid(grille_bateaux);

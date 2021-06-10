@@ -110,6 +110,7 @@ void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_batea
             (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
         }                                                                                   //par un caractère indiquant une case vide
     }
+    printf("deplacement du bateau de taille %d\n", (bateau[indice_bateau]).taille);
 }
 
 void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
@@ -127,6 +128,7 @@ void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
         }
     } while (app_grille(bateau, indice) == 1 || chevauchement(bateau, indice, *tableau_bateau) == 1);
 
+    printf("deplacement du bateau de taille %d de %d cases\n", (bateau[indice]).taille, nb_case);
     if(orientation == 1){
         for(i = bateau[indice].position_x; i <= bateau[indice].position_x + bateau[indice].taille; i++){
             (*tableau_bateau).grille[i][bateau[indice].position_y] = indice + 'a';
