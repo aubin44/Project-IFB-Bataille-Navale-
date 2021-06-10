@@ -126,15 +126,16 @@ void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
             nb_case = rand()%3 + 1;
             bateau[indice].position_y = bateau[indice].position_y + nb_case;
         }
+        printf("position x : %d, position y : %c, orientation : %c\n", bateau[indice].position_x + 1, bateau[indice].position_y + 1 + 'A', bateau[indice].orientation);
     } while (app_grille(bateau, indice) == 1 || chevauchement(bateau, indice, *tableau_bateau) == 1);
 
     printf("deplacement du bateau de taille %d de %d cases\n", (bateau[indice]).taille, nb_case);
     if(orientation == 1){
-        for(i = bateau[indice].position_x; i <= bateau[indice].position_x + bateau[indice].taille; i++){
+        for(i = bateau[indice].position_x; i < bateau[indice].position_x + bateau[indice].taille; i++){
             (*tableau_bateau).grille[i][bateau[indice].position_y] = indice + 'a';
         }
     }else{
-        for(i = bateau[indice].position_y; i <= bateau[indice].position_y + bateau[indice].taille; i++) {
+        for(i = bateau[indice].position_y; i < bateau[indice].position_y + bateau[indice].taille; i++) {
             (*tableau_bateau).grille[bateau[indice].position_x][i] = indice + 'a';
         }
     }
