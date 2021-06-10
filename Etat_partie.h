@@ -46,6 +46,12 @@ void bateau_a_deplacer (Boat bateau[], Grid cases_touchees, int *indice_bateau);
  */
 void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau);
 
+/**
+ * Attribue une nouvelle position dans la grille à un bateau
+ * @param indice le numéro du bateau
+ * @param bateau le bateau
+ * @param tableau_bateau la grille de bateau
+ */
 void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau);
 
 #endif //NEW_PROJECT_IFB_ETAT_PARTIE_H

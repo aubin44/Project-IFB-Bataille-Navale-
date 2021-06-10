@@ -30,7 +30,7 @@ void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat bat
  * Lancement du mode de jeu Classique
  * @param stuff le nombre de missile
  * @param grille_bateaux le tableau où sont placés les bateaux
- * @param grille_de_jeu la grille utilisée pour repérer les cases touchées
+ * @param grille_de_jeu la grille affichée au joueur
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
  * @param sauvegarde permet de reprendre une ancienne partie
@@ -42,7 +42,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
  * Lancement du mode de jeu Blind
  * @param stuff le nombre de missile
  * @param grille_bateaux le tableau où sont placés les bateaux
- * @param grille_de_jeu la grille utilisée pour repérer les cases touchées
+ * @param grille_de_jeu la grille affichée au joueur
  * @param Coo_X la coordonnée du point d'impact en abscisse
  * @param Coo_Y la coordonnée du point d'impact en ordonnée
  * @param sauvegarde permet de reprendre une ancienne partie
@@ -50,6 +50,17 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
  */
 int blind(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde);
 
+/**
+ * Lancement du mode de jeu Active
+ * @param stuff le nombre de missile
+ * @param grille_bateaux le tableau où sont placés les bateaux
+ * @param grille_de_jeu la grille affichée au joueur
+ * @param Coo_X la coordonnée du point d'impact en abscisse
+ * @param Coo_Y la coordonnée du point d'impact en ordonnée
+ * @param sauvegarde permet de reprendre une ancienne partie
+ * @param bateau le bateau qui va être déplacé entre chaque tour
+ * @return 0 si le joueur veut quitter la partie
+ */
 int active(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_X, int Coo_Y, char sauvegarde, Boat bateau[]);
 
 #endif //NEW_PROJECT_IFB_TYPE_DE_PARTIE_H
