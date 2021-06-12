@@ -8,7 +8,7 @@
 
 void init_grille(Grid *grille){
     int x, y;
-    for(y = 0; y < (*grille).hauteur; y++){                 //Grille initialiser : Tous les caractères valent '_'
+    for(y = 0; y < (*grille).hauteur; y++){                 //Grille initialisée : Tous les caractères valent '_'
         for(x = 0; x < (*grille).largeur; x++){             //'_' représente une case vide
             (*grille).grille[x][y] = '_';
         }
@@ -71,14 +71,14 @@ void genere_bateau(Boat *bateau, int i, Grid grille_bateau){
 int chevauchement(Boat *bateau,int i, Grid grille_bateau){
     int a, test = 0;
 
-    if(bateau[i].orientation == 'H'){                                                       //Si le bateau est horizontale
+    if(bateau[i].orientation == 'H'){                                                       //Si le bateau est horizontal
         for(a = bateau[i].position_x; a - bateau[i].position_x < bateau[i].taille; a++){    //Vérifier pour les coordonnées allant de (x,y) à (x + taille,y)
             if(grille_bateau.grille[a][bateau[i].position_y] != '_'){                       //Si une des cases n'est pas vide
                 test = 1;
             }
         }
     }else{
-        for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){    //Si le bateau est verticale
+        for(a = bateau[i].position_y; a - bateau[i].position_y < bateau[i].taille; a++){    //Si le bateau est vertical
             if(grille_bateau.grille[bateau[i].position_x][a] != '_'){                       //Vérifier pour les coordonnées allant de (x,y) à (x,y + taille)
                 test = 1;                                                                   //Si une des cases n'est pas vide
             }

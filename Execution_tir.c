@@ -14,7 +14,7 @@ void fire_artillery(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *case
         if ((*tableau_bateau).grille[a][Y] != '_' && (*tableau_bateau).grille[a][Y] != 'F') {   //Lorsqu'une case sur cette colonne est un bateau
             (*grille).grille[a][Y] = 'X';                                                       //La case correspondante de la grille de jeu affiche 'X'(mode Classique)
             (*cases_touchees).grille[a][Y] = 'X';                                               //La case correspondante de la grille affiche 'X'(mode Blind)
-            (*tableau_bateau).grille[a][Y] = toupper((*tableau_bateau).grille[a][Y]);           //Marquage des case contenant des bateaux touchés dans la grille de bateaux
+            (*tableau_bateau).grille[a][Y] = toupper((*tableau_bateau).grille[a][Y]);           //Marquage des cases contenant des bateaux touchés dans la grille de bateaux
         }else{                                                                                  //Lorsqu'une case sur cette colonne est de l'eau
             (*grille).grille[a][Y] = 'O';                                                       //La case correspondante de la grille de jeu affiche 'O'
             (*tableau_bateau).grille[a][Y] = 'F';                                               //La case correspondante de la grille de bateau est marquée
@@ -24,7 +24,7 @@ void fire_artillery(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *case
         if((*tableau_bateau).grille[X][b] != '_' && (*tableau_bateau).grille[X][b] != 'F'){     //Lorsqu'une case sur cette ligne est un bateau
             (*grille).grille[X][b] = 'X';                                                       //La case correspondante de la grille de jeu affiche 'X'(mode Classique)
             (*cases_touchees).grille[X][b] = 'X';                                               //La case correspondante de la grille affiche 'X'(mode Blind)
-            (*tableau_bateau).grille[X][b] = toupper((*tableau_bateau).grille[X][b]);           //Marquage des case contenant des bateaux touchés
+            (*tableau_bateau).grille[X][b] = toupper((*tableau_bateau).grille[X][b]);           //Marquage des cases contenant des bateaux touchés
         }else{                                                                                  //Lorsq'une case sur cette ligne est de l'eau
             (*grille).grille[X][b] = 'O';                                                       //La case correspondante de la grille de jeu affiche 'O'
             (*tableau_bateau).grille[X][b] = 'F';                                               //La case correspondante de la grille de bateau est marquée
@@ -69,7 +69,7 @@ void fire_bomb(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_tou
         Ymax = (*tableau_bateau).hauteur - 1;
     }
     for(a = Xmin; a <= Xmax; a++){
-        for(b = Ymin; b <= Ymax; b++){                                                          //On parcourt dans le tableau de bateaux toute la zone autour du point d'impact de rayon prédéfinit
+        for(b = Ymin; b <= Ymax; b++){                                                          //On parcourt dans le tableau de bateaux toute la zone autour du point d'impact de rayon prédéfini
             if((*tableau_bateau).grille[a][b] == '_' || (*tableau_bateau).grille[a][b] == 'F'){ //Si la case est de l'eau
                 (*grille).grille[a][b] = 'O';                                                   //La case correspondante dans la grille de jeu affiche 'O'
                 (*tableau_bateau).grille[a][b] = 'F';                                           //La case correspondante de la grille de bateau est marquée
@@ -89,7 +89,7 @@ void fire_simple(Grid *grille, Grid *tableau_bateau, int X, int Y, Grid *cases_t
     }else{                                                                              //Si le point d'impact dans le tableau de bateaux est un bateau
         (*grille).grille[X][Y] = 'X';                                                   //Le point correspondant sur la grille de jeu affiche 'X'(mode Classique)
         (*cases_touchees).grille[X][Y] = 'X';                                           //Le point correspondant de la grille affiche 'X'(mode Blind)
-        (*tableau_bateau).grille[X][Y] = toupper((*tableau_bateau).grille[X][Y]);       //Marquage des case contenant des bateaux touchés
+        (*tableau_bateau).grille[X][Y] = toupper((*tableau_bateau).grille[X][Y]);       //Marquage des cases contenant des bateaux touchés
     }
 }
 
@@ -103,7 +103,7 @@ void choix_missile(char *missile){
     rep = getchar();
     rep = toupper(rep);                                                                 //Mise de la réponse en majuscule pour éviter les erreurs
 
-    while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){                       //Controle d'acquisition avec message d'erreur
+    while (rep != 'A' && rep != 'T' && rep != 'B' && rep != 'S'){                       //Contrôle d'acquisition avec message d'erreur
         printf("ERREUR ! Veuillez saisir un missile existant !\n");
         printf("Veuillez saisir un des missiles suivants :\n");
         printf(" -A : Pour missile d'artillerie\n -T : Pour missile tactique\n"
@@ -123,7 +123,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
 
     printf("Dans quelle colonne souhaitez vous tirer :");
     scanf("%d", &position_X);
-    while (position_X < 1 || position_X > 10){                                              //Controle d'acquistion avec message d'erreur
+    while (position_X < 1 || position_X > 10){                                              //Contrôle d'acquistion avec message d'erreur
         printf("Veuillez saisir une valeure comprise dans l'intervalle [1;10]\n");
         printf("Dans quelle colonne souhaitez vous tirer :\n");
         fflush(stdin);
@@ -133,7 +133,7 @@ void choix_coo_de_tir(int *Coo_X, int *Coo_Y){
     fflush(stdin);
     buffer = getchar();
     buffer = toupper(buffer);
-    while (buffer - 'A' < 0 || buffer - 'A' > 9){                                           //Controle d'acquistion avec message d'erreur
+    while (buffer - 'A' < 0 || buffer - 'A' > 9){                                           //Contrôle d'acquistion avec message d'erreur
         printf("Veuillez saisir une lettre entre A et J ");
         printf("Dans quelle ligne souhaitez vous tirer :");
         fflush(stdin);
@@ -160,7 +160,7 @@ void tir(int Coo_X, int Coo_Y, Grid *grille_de_jeu, Grid *grille_bateaux, int mi
         fire_simple(grille_de_jeu, grille_bateaux, Coo_X, Coo_Y, cases_touchees);       //Déclenchement du missile simple
         (*stuff).nb_missile_simple -= 1;                                                //Le nombre de missile simple diminue
     } else {
-        printf("ERREUR, vous n'avez plus de ce missile");
+        printf("ERREUR, vous n'avez plus de ce missile\n");
         (*check) = 1;                                                                   //Variable permettant de recommencer la fonction en cas d'erreur
     }
 }

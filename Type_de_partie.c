@@ -77,7 +77,7 @@ void lancement_nouvelle_partie(Grid grille_de_jeu, Grid grille_bateaux, Boat bat
             blind(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde);
         } else if (rep == 'A') {
             active(stuff, grille_bateaux, grille_de_jeu, Coo_X, Coo_Y, sauvegarde, bateau);
-        } else {                                                                                            //Si le mode saisie par le joueur n'existe pas
+        } else {                                                                                            //Si le mode saisi par le joueur n'existe pas
             printf("Le mode saisie n'existe pas !\n");                                              //Demander un mode existant
             check2 = 1;
         }
@@ -102,7 +102,7 @@ int classique(Inventory stuff, Grid grille_bateaux, Grid grille_de_jeu, int Coo_
     do {
         init_grille(&cases_touchees);
         check_loose(stuff);
-        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case à déja été touchée
+        choix_coo_de_tir(&Coo_X, &Coo_Y);                           //Tant que la case a déja été touchée
         while(grille_bateaux.grille[Coo_X][Coo_Y] <= 'F'){          //Demande au joueur de choisir une autre case
             printf("Vous avez deja tirez sur cette case !");
             choix_coo_de_tir(&Coo_X, &Coo_Y);

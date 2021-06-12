@@ -12,17 +12,17 @@ void bateaux_restants(Grid tableau_bateau, int *bateau){
     int nb_case = 0, nb_bateau = 0;
     for(i = 'a'; i<= 'e'; i++){                                     //On utilise les caractères de marquage (a/b/c/d/e/A/B/C/D/E)
         nb_case = 0;                                                //placés dans le tableau contenant les bateaux
-        for(x = 0; x < tableau_bateau.largeur; x++){                //Cela nous permet de savoir combien de case ont été touchées par bateau
+        for(x = 0; x < tableau_bateau.largeur; x++){                //Cela nous permet de savoir combien de cases ont été touchées par bateau
             for(y = 0; y < tableau_bateau.hauteur; y++){
                 if(tableau_bateau.grille[x][y] == i){
                     nb_case = nb_case + 1;
                 }
             }
         }
-        if(nb_case > 0){                                             //Si le nombre de case non touchées est supérieur à 0 cela signifie que le bateau n'est pas coulé
+        if(nb_case > 0){                                             //Si le nombre de cases non touchées est supérieur à 0 cela signifie que le bateau n'est pas coulé
             nb_bateau = nb_bateau + 1;
             printf("-bateau%d : %d cases restantes\n", i - 'a' + 1, nb_case);
-        }else if(nb_case == 0){                                     //Si le nombre de case non touchées est de 0 cela signifie que le bateau est coulé
+        }else if(nb_case == 0){                                     //Si le nombre de cases non touchées est de 0 cela signifie que le bateau est coulé
             printf("-bateau%d : coule !\n", i - 'a' + 1);
         }
     }
@@ -36,7 +36,7 @@ void missiles_restants(Inventory missile){
 }
 
 int check_loose(Inventory nb_missile){
-    if(nb_missile.nb_missile_artillery == 0 && nb_missile.nb_missile_bomb == 0          //Si il ne reste plus aucun missile le joueur a perdu
+    if(nb_missile.nb_missile_artillery == 0 && nb_missile.nb_missile_bomb == 0          //S'il ne reste plus aucun missile le joueur a perdu
        && nb_missile.nb_missile_simple == 0 && nb_missile.nb_missile_tactical == 0){
         printf("\nVous n'avez plus de missiles. Vous avez perdu !\n");
         exit(0);
@@ -91,7 +91,7 @@ void bateau_a_deplacer(Boat bateau[], Grid cases_touchees, int *indice_bateau){
     }else{
         do{
             indice = rand()% 5;                                                             //Générer un nombre appartenant à l'intervalle [0; 4]
-        } while (bateau_touche[indice] == 1);                                               //Recommencer tant que le bateau correspondant à se nombre a été touché
+        } while (bateau_touche[indice] == 1);                                               //Recommencer tant que le bateau correspondant à ce nombre a été touché
         *indice_bateau = indice;
     }
 }
@@ -99,12 +99,12 @@ void bateau_a_deplacer(Boat bateau[], Grid cases_touchees, int *indice_bateau){
 void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_bateau){
     int i;
 
-    if(bateau[indice_bateau].orientation == 'H'){                                           //Lorsque le bateau est horizontale
+    if(bateau[indice_bateau].orientation == 'H'){                                           //Lorsque le bateau est horizontal
         for(i = bateau[indice_bateau].position_x;                                           //Parcourir le bateau sur toute sa longueur dans la grille de bateau
             i < bateau[indice_bateau].position_x +bateau[indice_bateau].taille; i++){
             (*tableau_bateau).grille[i][bateau[indice_bateau].position_y] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
         }                                                                                   //par un caractère indiquant une case vide
-    }else{                                                                                  //Lorsque le bateau est verticale
+    }else{                                                                                  //Lorsque le bateau est vertical
         for(i = bateau[indice_bateau].position_y;                                           //Parcourir le bateau sur toute sa longueur dans la grille de bateau
             i < bateau[indice_bateau].position_y + bateau[indice_bateau].taille; i++){
             (*tableau_bateau).grille[bateau[indice_bateau].position_x][i] = '_';            //Remplacer le caractère indiquant la présence d'un bateau (a/b/c/d/e)
@@ -114,15 +114,15 @@ void supp_ancienne_position(int indice_bateau, Boat *bateau, Grid *tableau_batea
 
 void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
     int nb_case, i, orientation, signe;
-    int tampon_x = bateau[indice].position_x;                                   //Variable permettant de sauvegarder l'ancienne valeaure du bateau en abscisse
-    int tampon_y = bateau[indice].position_y;                                   //Variable permettant de sauvegarder l'ancienne valeure du bateau en ordonnée
+    int tampon_x = bateau[indice].position_x;                                   //Variable permettant de sauvegarder l'ancienne valeur du bateau en abscisse
+    int tampon_y = bateau[indice].position_y;                                   //Variable permettant de sauvegarder l'ancienne valeur du bateau en ordonnée
 
     do {
         orientation = rand()%2;                                                 //Générer un nouvelle orientation pour le bateau à déplacer entre les deux tours
         if(orientation == 1){                                                   //Si cette orientation est horizontale
             bateau[indice].orientation = 'H';
             nb_case = rand()%3 + 1;                                             //Générer le nombre de case de déplacement du bateau entre les deux tours
-            signe = rand()%2;                                                   //Générer un nombre permettant si ce déplacement sera négatif ou positif sur la grille
+            signe = rand()%2;                                                   //Générer un nombre permettant de définir si ce déplacement sera négatif ou positif sur la grille
             if(signe == 1) {
                 bateau[indice].position_x = tampon_x + nb_case;
             }else{                                                              //Affectation de la nouvelle place en x du bateau en fonction du signe
@@ -131,14 +131,14 @@ void nouvelle_position(int indice, Boat *bateau, Grid *tableau_bateau){
         }else{                                                                  //Si cette orientation est verticale
             bateau[indice].orientation = 'V';
             nb_case = rand()%3 + 1;                                             //Générer le nombre de case de déplacement du bateau entre les deux tours
-            signe = rand()%2;                                                   //Générer un nombre permettant si ce déplacement sera négatif ou positif sur la grille
+            signe = rand()%2;                                                   //Générer un nombre permettant de définir si ce déplacement sera négatif ou positif sur la grille
             if(signe == 1) {
                 bateau[indice].position_y = tampon_y + nb_case;
             }else{                                                              //Affectation de la nouvelle place en y du bateau en fonction du signe
                 bateau[indice].position_y = tampon_y - nb_case;
             }
         }
-                                                                                //Répeter cela tant que le bateau dépasse de la grille ou qu'il chevauche un autre bateau de la grille
+                                                                                //Répéter cela tant que le bateau dépasse de la grille ou qu'il chevauche un autre bateau de la grille
     } while (app_grille(bateau, indice) == 1 || chevauchement(bateau, indice, *tableau_bateau) == 1);
 
     printf("Un bateau de taille %d s'est deplace de %d case(s)\nInfo :"
